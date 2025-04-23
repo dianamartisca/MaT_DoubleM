@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Programare clienti</title>
+    <link rel="stylesheet" href="css/client.css">
+  </head>
+
+  <body>
+    <div class="minipage">
+
+        <h1>Programare</h1>
+
+        <div class="calendar">
+
+          <div class="calendar-header">
+            <button class="previous-month">-</button>
+            <h2 class="month-year"></h2>
+            <button class="next-month">+</button>
+          </div>
+
+          <div class="days"></div>
+
+        </div>
+
+
+        <div class="hours-popup">
+          <h3 class="selected-day"></h3>
+          <div class="hours"></div>
+        </div>
+        
+        <form class="reserv-form">
+          <h2>Formular de programare</h2>
+    
+          <label>Data si ora selectata: 
+            <input type="text" readonly id="datetime">
+          </label>
+    
+          <label>
+            Descriere Problema:
+            <textarea></textarea>
+          </label>
+    
+          <label>
+            Adauga imagini:
+            <input type="file" multiple>
+          </label>
+    
+          <button type="submit">Trimite cererea</button>
+        </form>
+
+    </div>
+
+    
+
+
+    <script src="js/client.js">
+    </script>
+  </body>
+</html>

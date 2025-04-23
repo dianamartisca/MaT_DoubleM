@@ -1,0 +1,59 @@
+body
+{
+  background:#686D76;
+  font-family: sans-serif;
+  
+}
+
+.minipage{
+  max-width:600px;
+  background:#EEEEEE;
+  margin:auto;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 0 8px;
+}
+
+.calendar-header{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+}
+
+
+.days{ /*de terminat dupa forms*/
+  display:grid;
+  grid-template-columns: repeat(7,1fr); /*7 col uniform*/
+  gap:15px;
+  margin-top:10px;
+}
+
+.days button{
+  padding:10px;
+  border:none;
+  cursor:pointer;
+  background-color: lightgreen;
+  border-radius:5px;
+  
+}
+.days button.not-good
+{
+  background-color: lightcoral;
+}
+
+form
+{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+button[type="submit"]
+{
+  border:none;
+  background-color:#DC5F00;
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
