@@ -1,61 +1,149 @@
 <!DOCTYPE html>
 <html lang="ro">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>Programare clienti</title>
-    <link rel="stylesheet" href="css/client.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <title>Programare clienti</title>
+  <link rel="stylesheet" href="css/client.css">
+</head>
 
-  <body>
+<body>
+
+  
+
+  <div class="everything">
+
+    <div class="left-part">
+      <img src="logo2.png">
+      <h3>Program:</h3>
+      <p>Luni-Vineri: 10:00-17:00</p>
+
+      <h3>Contact:</h3>
+      <p>📞 0755 691 390</p>
+      <p>✉️ doubleM@gmail.ro</p>
+
+      <h3>Servicii:</h3>
+      <ul>
+        <li>Schimb ulei,filtre și alte piese</li>
+        <li>Verificari periodice</li>
+        <li>Diagnoză completă</li>
+        <li>Reparații rapide</li>
+
+        <p></p>
+        <li>Înlocuiri baterii </li>
+        <li>Schimb roata trotineta/bicicleta</li>
+        <li>Inlocuire transmisie bicicleta</li>
+      </ul>
+
+      <div class="admin-link">
+        <a href="login.html">Ești administrator?</a>
+      </div>  
+    </div>
+
+
+
     <div class="minipage">
 
-        <h1>Programare</h1>
+      <h1>Programare</h1>
 
-        <div class="calendar">
+      <div class="calendar">
 
-          <div class="calendar-header">
-            <button class="previous-month">-</button>
-            <h2 class="month-year"></h2>
-            <button class="next-month">+</button>
-          </div>
-
-          <div class="days"></div>
-
+        <div class="calendar-header">
+          <button class="previous-month">🢀</button>
+          <h2 class="month-year"></h2>
+          <button class="next-month">🢂</button>
         </div>
 
+        <div class="days"></div>
 
-        <div class="hours-popup">
-          <h3 class="selected-day"></h3>
-          <div class="hours"></div>
-        </div>
-        
-        <form class="reserv-form">
-          <h2>Formular de programare</h2>
-    
-          <label>Data si ora selectata: 
-            <input type="text" readonly id="datetime">
-          </label>
-    
-          <label>
-            Descriere Problema:
-            <textarea></textarea>
-          </label>
-    
-          <label>
-            Adauga imagini:
-            <input type="file" multiple>
-          </label>
-    
-          <button type="submit">Trimite cererea</button>
-        </form>
+      </div>
+
+
+      <div class="hours-popup">
+        <h3 class="selected-day"></h3>
+        <div class="hours"></div>
+      </div>
+
+
+      <form class="reserv-form">
+        <h2>Formular de programare</h2>
+
+        <label>Nume si prenume:
+          <p></p>
+          <input type="text" required>
+        </label>
+
+        <label>Email:
+          <p></p>
+          <input type="email" required>
+        </label>
+
+
+        <label>Data si ora selectata:
+          <p></p>
+          <input type="text" readonly id="datetime">
+        </label>
+
+        <label>Am probleme cu:
+          <p></p>
+          <input type="radio" name="check-prob" checked>Masina
+          <input type="radio" name="check-prob">Bicicleta
+          <input type="radio" name="check-prob">Trotineta
+        </label>
+
+        <label>
+          Descriere Problema:
+          <p></p>
+          <textarea class="textarea1"></textarea>
+        </label>
+
+        <label>
+          Adauga imagini:
+          <input type="file" multiple>
+        </label>
+
+        <button type="submit">Trimite cererea</button>
+      </form>
 
     </div>
 
-    
+
+    <div class="right-part">
+      <img src="logo2.png">
+
+      <h3>Recenzii clienți</h3>
+      <div class="review">
+        
+        <blockquote style="margin-bottom: 20px;">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          „Mi-am adus bicicleta pentru o revizie generală. Au fost atenți la toate detaliile și au folosit piese de
+          calitate. M-au sfătuit și despre întreținerea periodică. Clar voi reveni!”<br><br>- <b>Maria Mihaescu</b>.
+        </blockquote>
+      </div>
+
+      <div class="review">
+        <blockquote style="margin-bottom: 20px;">
+          <div class="stars">⭐⭐⭐⭐</div>
+          „Am fost impresionat de cât de repede am reușit să fac o programare și să primesc ajutor. Trotineta mea
+          electrică a fost reparată în mai puțin de 2 ore. Servicii rapide și eficiente!”<br><br>- <b>Radu Bucsa</b>.
+        </blockquote>
+      </div>
+      <div class="review">
+        <blockquote style="margin-bottom: 20px;">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          „Profesionalism, seriozitate și prețuri foarte bune. În plus, oferă și explicații clare despre reparațiile
+          făcute. Mi-au câștigat încrederea.”<br><br>- <b>Mihai Masinaru</b>.
+        </blockquote>
+      </div>
+    </div>
 
 
-    <script src="js/client.js">
-    </script>
-  </body>
+
+  </div>
+
+
+  <script src="js/client.js">
+  </script>
+</body>
+
 </html>
