@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: aliceblue;
+    background-color: #686D76;
 }
 
 form {
@@ -31,8 +31,8 @@ input {
 }
 
 .submit{
-    background-color: navy;
-    color:white;
+    background-color: #DC5F00;
+    
 }
 
 .formular {
