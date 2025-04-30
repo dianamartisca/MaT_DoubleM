@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+  }
+
+  .header1 {
+    background: url('../images/img1.jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+  }
+
+  .header1 h1 {
+    font-size: 2.5rem;
+    max-width: 700px;
+    margin: 0 auto 20px;
+  }
+
+  .header1 p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+
+  .programare-button {
+    background-color: #DC5F00;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none; /*ca sa scap de linia de la href*/
+  }
+
+  .about, .services, .gallery-contact {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .services-text {
+    flex: 1;
+  }
+
+  .services-gallery {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .services-gallery img,
+  .gallery img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  .view-all {
+    padding: 10px 20px;
+    border: 2px solid #222;
+    background: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .gallery {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .contact-info p {
+    margin: 4px 0;
+    font-size: 1.1rem;
+  }
+
+  .map
+  {
+    margin-top: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .services {
+      flex-direction: column;
+    }
+
+    .services-gallery {
+      justify-content: center;
+    }
+  }
