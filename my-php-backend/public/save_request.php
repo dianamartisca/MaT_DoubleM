@@ -1,28 +1,21 @@
 <?php
-require_once '../src/config/database.php';
-require_once '../src/models/Request.php';
+require_once '../src/controllers/RequestController.php';
 
-$database = new Database();
-$db = $database->getConnection();
+$requestController = new RequestController();
 
-if (!$db) {
-    die("Database connection failed.");
-}
-
-$request = new Request($db);
-
-$request->name = $_POST['name'];
-$request->email = $_POST['email'];
-$request->problem_type = $_POST['problem_type'];
+$name = $_POST['name'];
+$email = $_POST['email'];
+$problemType = $_POST['problem_type'];
 $date_requested = $_POST['date_requested'];
 $date_requested = str_replace('ora', '', $date_requested); 
 $date_requested = DateTime::createFromFormat('d.m.Y H:i', trim($date_requested));
 if ($date_requested) {
-    $request->date_requested = $date_requested->format('Y-m-d H:i:s');
+    $dateRequested = $date_requested->format('Y-m-d H:i:s');
 } else {
     die("Invalid date format.");
 }
-$request->description = $_POST['description'];
+$description = $_POST['description'];
+
 $uploaded_images = [];
 if (!empty($_FILES['images']['name'][0])) {
     $upload_dir = '../uploads/';
@@ -39,11 +32,7 @@ if (!empty($_FILES['images']['name'][0])) {
         }
     }
 }
-$request->images = implode(',', $uploaded_images);
+$images = implode(',', $uploaded_images);
 
-if ($request->createRequest()) {
-    echo "Cererea a fost trimisă cu succes!";
-} else {
-    echo "Eroare la salvarea cererii.";
-}
+$requestController->createRequest($name, $email, $problemType, $dateRequested, $description, $images);
 ?>

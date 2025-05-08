@@ -1,8 +1,8 @@
 <?php
 
-require_once '../models/Request.php';
-require_once '../helpers/response.php';
-require_once '../config/database.php';
+require_once dirname(__DIR__) . '/models/Request.php';
+require_once dirname(__DIR__) . '/helpers/response.php';
+require_once dirname(__DIR__) . '/config/database.php';
 
 class RequestController {
     private $requestModel;
