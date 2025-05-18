@@ -34,6 +34,15 @@ CREATE TABLE `requests` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+CREATE TABLE IF NOT EXISTS comenzi_furnizori (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    produs VARCHAR(255),
+    furnizor VARCHAR(255),
+    cantitate INT,
+    data_comanda DATE
+);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

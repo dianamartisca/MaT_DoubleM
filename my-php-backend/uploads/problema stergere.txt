@@ -1,0 +1,67 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int a[105][105],i,j,n,m,mx=0,mn=999999,mxi,mxj,mni,mnj;
+int main()
+{
+    cin>>n>>m;
+    for(i=1;i<=n;i++)
+        for(j=1;j<=m;j++)
+           {
+            cin>>a[i][j];
+            if(a[i][j]>mx)
+                mx=a[i][j],mxi=i,mxj=j;
+            if(a[i][j]<mn)
+                mn=a[i][j],mni=i,mxj=j;
+           }
+    if(mni==mxi)
+    {
+        for(i=mni+1;i<=n;i++)
+            for(j=1;j<=m;j++)
+                a[i-1][j]=a[i][j];
+        n--;
+    }else
+{
+        if(mni>mxi)
+            swap(mni,mxi);
+//mni mai mic decat mxi
+
+        for(i=mxi+1;i<=n;i++)
+            for(j=1;j<=m;j++)
+                a[i-1][j]=a[i][j];
+        n--;
+//linie margine
+
+        for(i=mni+1;i<=n;i++)
+            for(j=1;j<=m;j++)
+                a[i-1][j]=a[i][j];
+        n--;
+//linie interioara
+
+    }
+    if(mxj==mnj)
+    {
+        for(i=1;i<=n;i++)
+            for(j=mxj+1;j<=n;j++)
+                a[i][j-1]=a[i][j];
+        m--;
+    }else{
+        if(mnj>mxj)
+            swap(mnj,mxj);
+            
+        for(i=1;i<=n;i++)
+            for(j=mxj+1;j<=m;j++)
+                a[i][j-1]=a[i][j];
+        m--;
+        for(i=1;i<=n;i++)
+            for(j=mnj+1;j<=m;j++)
+                a[i][j-1]=a[i][j];
+        m--;
+    }
+    for(i=1;i<=n;i++){
+        for(j=1;j<=m;j++)
+            cout<<a[i][j]<<" ";
+    cout<<endl;
+    }
+    return 0;
+}

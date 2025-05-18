@@ -1,11 +1,14 @@
 <?php
 require_once 'controllers/RequestController.php';
+require_once 'controllers/OrderController.php';
+function routeRequest($method, $uri)
+{
 
-function routeRequest($method, $uri) {
+    
+
     $uri = explode('?', $uri)[0];
     $segments = explode('/', $uri);
-    error_log("Request URI: " . $uri);
-    error_log("Segments: " . print_r($segments, true));
+    
     if (in_array('requests', $segments)) {
         $requestController = new RequestController();
 
@@ -53,8 +56,21 @@ function routeRequest($method, $uri) {
                 sendError("Method not allowed.", 405);
                 break;
         }
+    } elseif (in_array('orders', $segments)) {
+        $orderController = new OrderController();
+
+        switch ($method) {
+            case 'GET':
+                $orderController->getOrders();
+                break;
+            case 'POST':
+                $orderController->addOrder();
+                break;
+            default:
+                http_response_code(405);
+                echo json_encode(['error' => 'Method not allowed']);
+        }
     } else {
         sendError("Endpoint not found.", 404);
     }
 }
-?>
