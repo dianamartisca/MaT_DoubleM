@@ -18,14 +18,10 @@ document.querySelector('.submit-btn').addEventListener('click', async function (
   });
 
   const result = await response.json();
-  console.log(result);
+  //console.log(result);
 
-  if (result.success) {
-    alert("Comanda a fost înregistrată cu succes!");
-    location.reload(); // sau reincarc dinamic
-  } else {
-    alert("Eroare la trimiterea comenzii: " + (result.error || "necunoscuta"));
-  }
+  location.reload();
+ // window.location.href = "comenzi-furnizori-conf.html";
 });
 
 

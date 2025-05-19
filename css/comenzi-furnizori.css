@@ -38,7 +38,8 @@ th {
   margin-right: auto;
 }
 
-.add-form input, .add-form button {
+.add-form input, .add-form button 
+{
   width: 90%;
   padding: 10px;
   margin: 10px 0;
@@ -46,7 +47,7 @@ th {
 }
 
 .submit-btn {
-  background-color: #686D76;
+  background-color: #333;
   color: white;
   border: none;
   border-radius: 6px;
