@@ -54,46 +54,44 @@
       </div>
 
 
-      <form class="reserv-form">
+      <form class="reserv-form" enctype="multipart/form-data" method="POST" action="my-php-backend/public/index.php/requests">
         <h2>Formular de programare</h2>
-
+      
         <label>Nume si prenume:
           <p></p>
-          <input type="text" required>
+          <input type="text" name="name" required>
         </label>
-
+      
         <label>Email:
           <p></p>
-          <input type="email" required>
+          <input type="email" name="email" required>
         </label>
-
-
+      
         <label>Data si ora selectata:
           <p></p>
-          <input type="text" readonly id="datetime">
+          <input type="text" name="date_requested" readonly id="datetime" required>
         </label>
-
+      
         <label>Am probleme cu:
           <p></p>
-          <input type="radio" name="check-prob" checked>Masina
-          <input type="radio" name="check-prob">Bicicleta
-          <input type="radio" name="check-prob">Trotineta
+          <input type="radio" name="problem_type" value="Masina" checked>Masina
+          <input type="radio" name="problem_type" value="Bicicleta">Bicicleta
+          <input type="radio" name="problem_type" value="Trotineta">Trotineta
         </label>
-
+      
         <label>
           Descriere Problema:
           <p></p>
-          <textarea class="textarea1"></textarea>
+          <textarea name="description" class="textarea1"></textarea>
         </label>
-
+      
         <label>
           Adauga imagini:
-          <input type="file" multiple>
+          <input type="file" name="images[]" multiple>
         </label>
-
+      
         <button type="submit">Trimite cererea</button>
       </form>
-
     </div>
 
 
@@ -131,8 +129,8 @@
   </div>
 
 
-  <script src="js/client.js">
-  </script>
+  <script src="js/client.js"></script>
+  <script src="js/request.js"></script>
 </body>
 
 </html>

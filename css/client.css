@@ -99,6 +99,7 @@ button[type="submit"]
   border: none;
   border-radius: 8px;
   background-color: lightgreen;
+  cursor:pointer;
 }
 .hours button.not-good
 {

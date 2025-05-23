@@ -23,7 +23,7 @@ th, td {
 }
 
 th {
-  background-color: #DC5F00;
+  background-color:#333;
   color: white;
 }
 
@@ -38,15 +38,16 @@ th {
   margin-right: auto;
 }
 
-.add-form input, .add-form button {
-  width: 100%;
+.add-form input, .add-form button 
+{
+  width: 90%;
   padding: 10px;
   margin: 10px 0;
   font-size: 1rem;
 }
 
 .submit-btn {
-  background-color: #007f6e;
+  background-color: #DC5F00;
   color: white;
   border: none;
   border-radius: 6px;
