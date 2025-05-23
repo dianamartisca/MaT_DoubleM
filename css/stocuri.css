@@ -35,3 +35,41 @@ th {
   border-radius: 5px;
   cursor: pointer;
 }
+
+/* Partea de formular*/
+
+form#addForm {
+  margin-top: 40px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+form#addForm input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 200px;
+}
+
+form#addForm button {
+  padding: 10px 20px;
+  background-color: #DC5F00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form#addForm button:hover {
+  background-color: #c24f00;
+}

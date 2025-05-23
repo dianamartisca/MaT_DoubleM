@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="css/stocuri.css">
 
 </head>
+
 <body>
   <h1>Stocuri disponibile</h1>
   <table>
@@ -19,7 +21,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <!-- <tr>
         <td>Plăcuțe frână auto</td>
         <td>Mașini</td>
         <td>18</td>
@@ -36,10 +38,23 @@
         <td>Trotinete</td>
         <td>12</td>
         <td><button class="edit-btn">Editează</button></td>
-      </tr>
+      </tr> -->
     </tbody>
   </table>
 
+  <!-- NOU -->
+  <h2>Adauga piesa noua</h2>
+
+
+  <form id="addForm">
+    <input type="text" id="denumire" placeholder="Denumire piesă" required>
+    <input type="text" id="categorie" placeholder="Categorie" required>
+    <input type="number" id="cantitate" placeholder="Cantitate" min="0" required>
+    <button type="submit">Adaugă</button>
+  </form>
+
+
   <script src="js/stocuri.js"></script>
 </body>
+
 </html>

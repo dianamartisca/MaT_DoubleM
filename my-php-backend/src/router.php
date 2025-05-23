@@ -1,14 +1,15 @@
 <?php
 require_once 'controllers/RequestController.php';
 require_once 'controllers/OrderController.php';
+require_once 'controllers/StockController.php';
 function routeRequest($method, $uri)
 {
 
-    
+
 
     $uri = explode('?', $uri)[0];
     $segments = explode('/', $uri);
-    
+
     if (in_array('requests', $segments)) {
         $requestController = new RequestController();
 
@@ -56,7 +57,9 @@ function routeRequest($method, $uri)
                 sendError("Method not allowed.", 405);
                 break;
         }
-    } elseif (in_array('orders', $segments)) {
+    } 
+    
+    elseif (in_array('orders', $segments)) {
         $orderController = new OrderController();
 
         switch ($method) {
@@ -70,7 +73,26 @@ function routeRequest($method, $uri)
                 http_response_code(405);
                 echo json_encode(['error' => 'Method not allowed']);
         }
-    } else {
+    } 
+    
+   elseif (in_array('piese', $segments)) {
+    $controller = new StockController();
+
+    if ($method == 'GET') {
+        $controller->getAll();
+    }
+    elseif ($method == 'POST' && in_array('update', $segments)) {
+        $controller->update();
+    }
+    elseif ($method == 'POST' && !in_array('update', $segments)) {
+        $controller->add();
+    }
+    else {
+        http_response_code(405);
+        echo json_encode(['error' => 'Method not allowed']);
+    }
+}
+ else {
         sendError("Endpoint not found.", 404);
     }
 }

@@ -30,12 +30,9 @@ function displayRequests(requests) {
       <td>${req.date_requested}</td>
       <td>${req.description}</td>
       <td>
-  ${req.images ? (() => {
-        const fileName = req.images.split("uploads/").pop();
-        return `<a href="/MaT_DoubleM/my-php-backend/public/downloads.php?file=
-        ${encodeURIComponent(fileName)}" target="_blank">Vezi fișiere</a>`;
-        
-      })() : "-"}
+  ${req.images
+  ? `<a href="/MaT_DoubleM/my-php-backend/uploads/${encodeURIComponent(req.images.trim().split(/[/\\]/).pop())}" target="_blank">Vezi fișier</a>`
+  : "-"}
 </td>
       <td>
         <textarea placeholder="Scrie răspunsul pentru client..."></textarea>

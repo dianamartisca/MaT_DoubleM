@@ -43,6 +43,20 @@ CREATE TABLE IF NOT EXISTS comenzi_furnizori (
     data_comanda DATE
 );
 
+
+CREATE TABLE IF NOT EXISTS piese (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  denumire VARCHAR(100),
+  categorie VARCHAR(50),
+  cantitate INT
+);
+
+INSERT INTO `piese` (`id`, `denumire`, `categorie`,`cantitate`) VALUES
+(1, 'Plăcuțe frână auto','Masini',20),
+(2, 'Lanț bicicletă', 'Biciclete', 35),
+(3, 'Baterie trotinetă electrică', 'Trotinete', 12);
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
