@@ -4,16 +4,19 @@ require_once dirname(__DIR__) . '/models/Request.php';
 require_once dirname(__DIR__) . '/helpers/response.php';
 require_once dirname(__DIR__) . '/config/database.php';
 
-class RequestController {
+class RequestController
+{
     private $requestModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         $database = new Database();
         $db = $database->getConnection();
         $this->requestModel = new Request($db);
     }
 
-    public function createRequest($name, $email, $problemType, $dateRequested, $description, $images) {
+    public function createRequest($name, $email, $problemType, $dateRequested, $description, $images)
+    {
         $this->requestModel->name = $name;
         $this->requestModel->email = $email;
         $this->requestModel->problem_type = $problemType;
@@ -28,7 +31,8 @@ class RequestController {
         }
     }
 
-    public function getRequests() {
+    public function getRequests()
+    {
         $requests = $this->requestModel->getRequests();
         if ($requests) {
             $data = $requests->fetchAll(PDO::FETCH_ASSOC);
@@ -38,7 +42,8 @@ class RequestController {
         }
     }
 
-    public function respondToRequest($requestId, $response) {
+    public function respondToRequest($requestId, $response)
+    {
         $this->requestModel->id = $requestId;
         $this->requestModel->response = $response;
 
@@ -48,5 +53,24 @@ class RequestController {
             sendResponse(500, "Failed to update response.");
         }
     }
+
+    public function approve($id)
+    {
+        if ($this->requestModel->approveRequest($id)) {
+            echo json_encode(["message" => "Cerere aprobată"]);
+        } else {
+            http_response_code(500);
+            echo json_encode(["error" => "Eroare la aprobare"]);
+        }
+    }
+
+    public function reject($id)
+    {
+        if ($this->requestModel->rejectRequest($id)) {
+            echo json_encode(["message" => "Cerere respinsă"]);
+        } else {
+            http_response_code(500);
+            echo json_encode(["error" => "Eroare la respingere"]);
+        }
+    }
 }
-?>
