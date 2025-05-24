@@ -1,5 +1,10 @@
 <?php
 session_start();
 session_destroy();
-header("Location: login.php");
+?>
+<script>
+  localStorage.removeItem('jwt');
+  window.location.href = 'login.php';
+</script>
+<?php
 exit();

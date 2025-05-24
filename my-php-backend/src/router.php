@@ -2,6 +2,33 @@
 require_once 'controllers/RequestController.php';
 require_once 'controllers/OrderController.php';
 require_once 'controllers/StockController.php';
+require_once 'helpers/jwt_helper.php';
+
+function requireAuth($requiredRole = null) {
+    $headers = getallheaders();
+    if (!isset($headers['Authorization']) || !preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Token lipsă sau invalid']);
+        exit;
+    }
+    $jwt = $matches[1];
+    $payload = validateJWT($jwt); // This should return the decoded payload if valid
+
+    if (!$payload) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Token invalid sau expirat']);
+        exit;
+    }
+
+    // Check role if required
+    if ($requiredRole && (!isset($payload['role']) || $payload['role'] !== $requiredRole)) {
+        http_response_code(403);
+        echo json_encode(['error' => 'Acces interzis']);
+        exit;
+    }
+
+    return $payload; // return payload if you need user info later
+}
 
 function routeRequest($method, $uri)
 {
@@ -53,7 +80,6 @@ function routeRequest($method, $uri)
                         if (!is_dir($upload_dir)) {
                             mkdir($upload_dir, 0777, true);
                         }
-
                         foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
                             $file_name = basename($_FILES['images']['name'][$key]);
                             $target_file = $upload_dir . $file_name;
@@ -70,6 +96,7 @@ function routeRequest($method, $uri)
                 break;
 
             case 'GET':
+                requireAuth('admin');
                 $requestController->getRequests();
                 break;
 
@@ -77,6 +104,7 @@ function routeRequest($method, $uri)
                 sendError("Method not allowed.", 405);
         }
     } elseif (in_array('orders', $segments)) {
+        requireAuth('admin');
         $orderController = new OrderController();
 
         switch ($method) {
@@ -91,6 +119,7 @@ function routeRequest($method, $uri)
                 echo json_encode(['error' => 'Method not allowed']);
         }
     } elseif (in_array('piese', $segments)) {
+        requireAuth('admin');
         $controller = new StockController();
 
         if ($method == 'GET') {
@@ -103,7 +132,37 @@ function routeRequest($method, $uri)
             http_response_code(405);
             echo json_encode(['error' => 'Method not allowed']);
         }
+    } elseif (in_array('login', $segments)) {
+    if ($method === 'POST') {
+        require_once 'helpers/jwt_helper.php';
+
+        if (isset($_POST["user"]) && isset($_POST["pass"])) {
+            $pdo = new PDO("mysql:host=localhost;dbname=issuesdb","root","");
+            $stmt = $pdo->prepare("SELECT id, password, email, role FROM users WHERE user_name = ?");
+            $stmt->execute([$_POST["user"]]);
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($data && $_POST['pass'] === $data['password']) { 
+                $token = generateJWT([
+                    'user_id' => $data['id'],
+                    'user_name' => $_POST['user'],
+                    'email' => $data['email'],
+                    'role' => $data['role'] 
+                ]);
+                echo json_encode(['token' => $token]);
+            } else {
+                sendError('Utilizator inexistent sau parola gresita', 401);
+            }
+        } else {
+            sendError('Date lipsă pentru autentificare', 400);
+        }
     } else {
+        http_response_code(405);
+        echo json_encode(['error' => 'Method not allowed']);
+    }
+}
+    else {
         sendError("Endpoint not found.", 404);
     }
 }
+?>

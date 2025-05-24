@@ -5,7 +5,12 @@ window.addEventListener("DOMContentLoaded", () => {
 //astept sa fie gata dom
 
 function fetchRequests() {
-  fetch('/MaT_DoubleM/my-php-backend/public/index.php/requests')
+  const jwt = localStorage.getItem('jwt');
+  fetch('/MaT_DoubleM/my-php-backend/public/index.php/requests', {
+    headers: {
+      'Authorization': 'Bearer ' + jwt
+    }
+  })
     .then((res) => {
       if (!res.ok) throw new Error("Cereri negasite");
       return res.json();
@@ -62,10 +67,12 @@ function displayRequests(requests) {
 //pt aprove or not
 
 function approveRequest(id, button) {
+  const jwt = localStorage.getItem('jwt');
   fetch('/MaT_DoubleM/my-php-backend/public/index.php/requests/approve', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Bearer ' + jwt
     },
     body: `id=${id}`
   })
@@ -80,10 +87,12 @@ function approveRequest(id, button) {
 }
 
 function rejectRequest(id, button) {
+  const jwt = localStorage.getItem('jwt');
   fetch('/MaT_DoubleM/my-php-backend/public/index.php/requests/reject', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Bearer ' + jwt
     },
     body: `id=${id}`
   })
