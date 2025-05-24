@@ -54,5 +54,20 @@ class Request {
         }
         return false;
     }
+
+
+    //pt aprobare
+    public function approveRequest($id) {
+    $query = "UPDATE requests SET status = 'aprobata' WHERE id = :id";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':id', $id);
+    return $stmt->execute();
+}
+    public function rejectRequest($id) {
+    $query = "UPDATE requests SET status = 'respinsa' WHERE id = :id";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':id', $id);
+    return $stmt->execute();
+}
 }
 ?>

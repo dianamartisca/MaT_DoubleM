@@ -4,10 +4,13 @@ document.querySelector('.submit-btn').addEventListener('click', async function (
   const cantitate = parseInt(document.querySelector('input[name="cantitate"]').value);
   const dataComanda = document.querySelector('input[name="data_comanda"]').value;
 
+  const jwt = localStorage.getItem('jwt');
+
   const response = await fetch('http://localhost/MaT_DoubleM/my-php-backend/public/index.php/orders', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + jwt
     },
     body: JSON.stringify({
       produs: produs,
@@ -26,7 +29,12 @@ document.querySelector('.submit-btn').addEventListener('click', async function (
 
 
 async function incarcaComenzi() {
-  const response = await fetch('http://localhost/MaT_DoubleM/my-php-backend/public/index.php/orders');
+  const jwt = localStorage.getItem('jwt');
+  const response = await fetch('http://localhost/MaT_DoubleM/my-php-backend/public/index.php/orders', {
+    headers: {
+      'Authorization': 'Bearer ' + jwt
+    }
+  });
   const comenzi = await response.json();
 
   const tbody = document.querySelector('table tbody');

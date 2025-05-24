@@ -13,6 +13,11 @@ if (!isset($_SESSION['user'])) {
   <title>Dashboard</title>
 </head>
 <link rel="stylesheet" href="css/dashboard.css">
+<?php if (isset($_SESSION['jwt'])): ?>
+<script>
+  localStorage.setItem('jwt', '<?php echo $_SESSION['jwt']; ?>');
+</script>
+<?php endif; ?>
 
 <body>
   <h1>Bun venit, <?php echo $_SESSION['user']; ?>!</h1>

@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tbody = document.querySelector("tbody");
+  const jwt = localStorage.getItem('jwt');
 
-  fetch("/MaT_DoubleM/my-php-backend/public/index.php/piese")
+  fetch("/MaT_DoubleM/my-php-backend/public/index.php/piese", {
+    headers: {
+      'Authorization': 'Bearer ' + jwt
+    }
+  })
     .then(res => res.json())
     .then(data => {
       tbody.innerHTML = "";
@@ -41,7 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
           fetch("/MaT_DoubleM/my-php-backend/public/index.php/piese/update", {
             method: "POST",
             headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + jwt
             },
             body: JSON.stringify({
               id: id,
@@ -74,7 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
       fetch("/MaT_DoubleM/my-php-backend/public/index.php/piese", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + jwt
         },
         body: JSON.stringify({ denumire, categorie, cantitate })
       })

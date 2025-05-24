@@ -13,14 +13,15 @@ CREATE TABLE `users` (
   `user_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
+  `role` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_name` (`user_name`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `users` (`id`, `name`, `user_name`, `email`, `password`) VALUES
-(1, 'Popescu Ana', 'Anika', 'ania@uaic.ro', 'xpass'),
-(2, 'Admin', 'admin', 'admin@example.com', '1234');
+INSERT INTO `users` (`id`, `name`, `user_name`, `email`, `password`, `role`) VALUES
+(1, 'Popescu Ana', 'Anika', 'ania@uaic.ro', 'xpass', 'client'),
+(2, 'Admin', 'admin', 'admin@example.com', '1234', 'admin');
 
 CREATE TABLE `requests` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
