@@ -80,7 +80,6 @@ function routeRequest($method, $uri)
                         if (!is_dir($upload_dir)) {
                             mkdir($upload_dir, 0777, true);
                         }
-
                         foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
                             $file_name = basename($_FILES['images']['name'][$key]);
                             $target_file = $upload_dir . $file_name;

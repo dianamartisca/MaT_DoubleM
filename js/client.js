@@ -90,9 +90,7 @@ function loadApprovedRequestsAndRenderCalendar() {
   fetch("/MaT_DoubleM/my-php-backend/public/index.php/requests")
     .then(res => res.json())
     .then(data => {
-      bookedSlotsByDate = {};
-
-      
+      bookedSlotsByDate = {};      
 
       const toateCereri = data.message || [];
       const aprobate = toateCereri.filter(r => r.status === 'aprobata');
