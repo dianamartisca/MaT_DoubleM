@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
 require_once 'controllers/RequestController.php';
 require_once 'controllers/OrderController.php';
 require_once 'controllers/StockController.php';

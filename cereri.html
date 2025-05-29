@@ -92,6 +92,21 @@
     </tbody>
   </table>
 
-  <script src="js/cereri.js"></script>
+  <!-- Formular import și butoane export, cu clasă pentru stilizare -->
+  <div class="import-export-section">
+    <h3>Import/Export cereri</h3>
+    <form action="my-php-backend/src/config/cereri/import_cereri.php" method="post" enctype="multipart/form-data" class="import-form">
+      <span>Importă cereri (CSV sau JSON):</span>
+      <input type="file" name="import_file" id="import_file" accept=".csv,.json" required>
+      <button type="submit" class="import-btn">Import</button>
+    </form>
+    <div>
+      <span>Exportă cereri:</span>
+      <a href="my-php-backend/src/config/cereri/export_cereri.php?format=csv" class="export-btn">CSV</a>
+      <a href="my-php-backend/src/config/cereri/export_cereri.php?format=json" class="export-btn">JSON</a>
+      <a href="my-php-backend/src/config/cereri/export_cereri.php?format=pdf" class="export-btn">PDF</a>
+    </div>
+  </div>
+  <script src="js/cereri.js"></script>  
 </body>
 </html>
