@@ -1,5 +1,6 @@
 <?php
-class Request {
+class Request
+{
     private $conn;
     private $table = 'requests';
 
@@ -12,11 +13,13 @@ class Request {
     public $images;
     public $response;
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->conn = $db;
     }
 
-    public function createRequest() {
+    public function createRequest()
+    {
         $query = "INSERT INTO " . $this->table . " 
                   (name, email, problem_type, date_requested, description, images) 
                   VALUES (:name, :email, :problem_type, :date_requested, :description, :images)";
@@ -35,14 +38,16 @@ class Request {
         return false;
     }
 
-    public function getRequests() {
+    public function getRequests()
+    {
         $query = "SELECT * FROM " . $this->table;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
     }
 
-    public function respondToRequest() {
+    public function respondToRequest()
+    {
         $query = "UPDATE " . $this->table . " SET response = :response WHERE id = :id";
         $stmt = $this->conn->prepare($query);
 
@@ -57,17 +62,32 @@ class Request {
 
 
     //pt aprobare
-    public function approveRequest($id) {
-    $query = "UPDATE requests SET status = 'aprobata' WHERE id = :id";
-    $stmt = $this->conn->prepare($query);
-    $stmt->bindParam(':id', $id);
-    return $stmt->execute();
+    public function approveRequest($id)
+    {
+        $query = "UPDATE requests SET status = 'aprobata' WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
+    }
+    public function rejectRequest($id)
+    {
+        $query = "UPDATE requests SET status = 'respinsa' WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
+    }
+
+    public function deleteRequest($id)
+    {
+        $query = "DELETE FROM requests WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        return $stmt->execute([$id]);
+    }
+
+    public function resetRequestStatus($id)
+    {
+        $query = "UPDATE requests SET status = NULL WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        return $stmt->execute([$id]);
+    }
 }
-    public function rejectRequest($id) {
-    $query = "UPDATE requests SET status = 'respinsa' WHERE id = :id";
-    $stmt = $this->conn->prepare($query);
-    $stmt->bindParam(':id', $id);
-    return $stmt->execute();
-}
-}
-?>

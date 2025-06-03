@@ -73,4 +73,24 @@ class RequestController
             echo json_encode(["error" => "Eroare la respingere"]);
         }
     }
+
+    public function delete($id)
+    {
+        if ($this->requestModel->deleteRequest($id)) {
+            echo json_encode(["message" => "Cerere ștearsă"]);
+        } else {
+            http_response_code(500);
+            echo json_encode(["error" => "Eroare la ștergere"]);
+        }
+    }
+
+    public function resetStatus($id)
+    {
+        if ($this->requestModel->resetRequestStatus($id)) {
+            echo json_encode(["message" => "Status resetat"]);
+        } else {
+            http_response_code(500);
+            echo json_encode(["error" => "Eroare la resetarea statusului"]);
+        }
+    }
 }

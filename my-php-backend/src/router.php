@@ -5,7 +5,8 @@ require_once 'controllers/OrderController.php';
 require_once 'controllers/StockController.php';
 require_once 'helpers/jwt_helper.php';
 
-function requireAuth($requiredRole = null) {
+function requireAuth($requiredRole = null)
+{
     $headers = getallheaders();
     if (!isset($headers['Authorization']) || !preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)) {
         http_response_code(401);
@@ -39,7 +40,7 @@ function routeRequest($method, $uri)
     if (in_array('requests', $segments)) {
         $requestController = new RequestController();
 
-        // caută poziția lui 'requests' ca să afli ce urmează după
+        // caută poziția lui 'requests' ca să afli ce urmează dupa
         $pos = array_search('requests', $segments);
         $action = $segments[$pos + 1] ?? null;
 
@@ -51,7 +52,7 @@ function routeRequest($method, $uri)
                         $requestController->approve($id);
                     } else {
                         http_response_code(400);
-                        echo json_encode(["error" => "ID lipsă"]);
+                        echo json_encode(["error" => "ID lipsa"]);
                     }
                 } elseif ($action === 'reject') {
                     $id = $_POST['id'] ?? null;
@@ -59,7 +60,23 @@ function routeRequest($method, $uri)
                         $requestController->reject($id);
                     } else {
                         http_response_code(400);
-                        echo json_encode(["error" => "ID lipsă"]);
+                        echo json_encode(["error" => "ID lipsa"]);
+                    }
+                } else if ($action === 'delete') {
+                    $id = $_POST['id'] ?? null;
+                    if ($id) {
+                        $requestController->delete($id);
+                    } else {
+                        http_response_code(400);
+                        echo json_encode(["error" => "ID lipsa pentru stergere"]);
+                    }
+                } elseif ($action === 'reset-status') {
+                    $id = $_POST['id'] ?? null;
+                    if ($id) {
+                        $requestController->resetStatus($id);
+                    } else {
+                        http_response_code(400);
+                        echo json_encode(["error" => "ID lipsa pentru resetare"]);
                     }
                 } else {
                     $name = $_POST['name'];
@@ -134,36 +151,34 @@ function routeRequest($method, $uri)
             echo json_encode(['error' => 'Method not allowed']);
         }
     } elseif (in_array('login', $segments)) {
-    if ($method === 'POST') {
-        require_once 'helpers/jwt_helper.php';
+        if ($method === 'POST') {
+            require_once 'helpers/jwt_helper.php';
 
-        if (isset($_POST["user"]) && isset($_POST["pass"])) {
-            $pdo = new PDO("mysql:host=localhost;dbname=issuesdb","root","");
-            $stmt = $pdo->prepare("SELECT id, password, email, role FROM users WHERE user_name = ?");
-            $stmt->execute([$_POST["user"]]);
-            $data = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (isset($_POST["user"]) && isset($_POST["pass"])) {
+                $pdo = new PDO("mysql:host=localhost;dbname=issuesdb", "root", "");
+                $stmt = $pdo->prepare("SELECT id, password, email, role FROM users WHERE user_name = ?");
+                $stmt->execute([$_POST["user"]]);
+                $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($data && $_POST['pass'] === $data['password']) { 
-                $token = generateJWT([
-                    'user_id' => $data['id'],
-                    'user_name' => $_POST['user'],
-                    'email' => $data['email'],
-                    'role' => $data['role'] 
-                ]);
-                echo json_encode(['token' => $token]);
+                if ($data && $_POST['pass'] === $data['password']) {
+                    $token = generateJWT([
+                        'user_id' => $data['id'],
+                        'user_name' => $_POST['user'],
+                        'email' => $data['email'],
+                        'role' => $data['role']
+                    ]);
+                    echo json_encode(['token' => $token]);
+                } else {
+                    sendError('Utilizator inexistent sau parola gresita', 401);
+                }
             } else {
-                sendError('Utilizator inexistent sau parola gresita', 401);
+                sendError('Date lipsă pentru autentificare', 400);
             }
         } else {
-            sendError('Date lipsă pentru autentificare', 400);
+            http_response_code(405);
+            echo json_encode(['error' => 'Method not allowed']);
         }
     } else {
-        http_response_code(405);
-        echo json_encode(['error' => 'Method not allowed']);
-    }
-}
-    else {
         sendError("Endpoint not found.", 404);
     }
 }
-?>

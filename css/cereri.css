@@ -112,10 +112,27 @@ textarea:focus  /*pt color change cand scrii noice */
   font-weight: bold;
 }
 
+/*spoiler nu era ultimu*/
 td .send {
   display: block;
   margin: 0 auto;
 }
+
+.edit-btn{
+  background-color:#DC5F00 ;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.delete-btn
+{
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 16px;
 
 .export-btn {
   background-color: #DC5F00;
