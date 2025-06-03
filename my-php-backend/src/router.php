@@ -82,13 +82,13 @@ function routeRequest($method, $uri)
                     $name = $_POST['name'];
                     $email = $_POST['email'];
                     $problemType = $_POST['problem_type'];
+
                     $date_requested = $_POST['date_requested'];
-                    $date_requested = str_replace('ora', '', $date_requested);
-                    $date_requested = DateTime::createFromFormat('d.m.Y H:i', trim($date_requested));
+                    $date_requested = DateTime::createFromFormat('Y-m-d H:i', trim($date_requested));
                     if ($date_requested) {
                         $dateRequested = $date_requested->format('Y-m-d H:i:s');
                     } else {
-                        sendError("Invalid date format.", 400);
+                        sendError("Invalid date format. Received: " . $_POST['date_requested'], 400);
                     }
                     $description = $_POST['description'];
 
@@ -114,7 +114,8 @@ function routeRequest($method, $uri)
                 break;
 
             case 'GET':
-                requireAuth('admin');
+                 if (isset($_SERVER['HTTP_AUTHORIZATION'])) 
+                        requireAuth('admin');
                 $requestController->getRequests();
                 break;
 

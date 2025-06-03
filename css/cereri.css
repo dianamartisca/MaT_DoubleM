@@ -133,7 +133,11 @@ td .send {
   background-color: #dc3545;
   color: white;
   padding: 8px 16px;
-
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
 .export-btn {
   background-color: #DC5F00;
   color: #fff;

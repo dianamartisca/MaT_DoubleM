@@ -40,12 +40,12 @@ function generateCalendar(year, month) {
     let bookedHours = bookedSlotsByDate[dateKey] || [];
     let ziCompletaOcupata = bookedHours.length === availableHours.length;
 
-    
+
 
     if (thisDate < new Date(today.getFullYear(), today.getMonth(), today.getDate()) || ziuaSapt === 0 || ziuaSapt === 6) {
       buton.className = 'not-good';
     } else if (ziCompletaOcupata) {
-      
+
       buton.className = 'not-good';
     } else {
       buton.className = 'good';
@@ -65,6 +65,7 @@ function showHours(day, month, year) {
   let dateKey = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
   let booked = bookedSlotsByDate[dateKey] || [];
 
+  console.log("Verific zi:", dateKey, "Ore ocupate:", booked);
   availableHours.forEach(hour => {
     let buton = document.createElement('button');
     buton.textContent = hour;
@@ -75,37 +76,45 @@ function showHours(day, month, year) {
     } else {
       buton.className = 'good';
       buton.addEventListener('click', () => {
-        dateTime.value = `${dateString} ora ${hour}`;
+        dateTime.value =  `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')} ${hour}`;
       });
     }
 
     hoursAll.appendChild(buton);
+
+    
   });
 
   hoursPopup.style.display = 'block';
 }
 
 function loadApprovedRequestsAndRenderCalendar() {
-  
+
   fetch("/MaT_DoubleM/my-php-backend/public/index.php/requests")
     .then(res => res.json())
     .then(data => {
-      bookedSlotsByDate = {};      
+      bookedSlotsByDate = {};
 
       const toateCereri = data.message || [];
       const aprobate = toateCereri.filter(r => r.status === 'aprobata');
-    
+
 
       aprobate.forEach(r => {
-        const [dateStr, hourStr] = r.date_requested.split(" ");
-        const hour = hourStr.substring(0, 5);
-        if (!bookedSlotsByDate[dateStr]) {
-          bookedSlotsByDate[dateStr] = [];
+        // const [dateStr, hourStr] = r.date_requested.split(" ");
+        // const hour = hourStr.substring(0, 5);
+
+       const [dateStr, hourStr] = r.date_requested.split(" ");
+        const dateKey = dateStr; // ex 2025-06-24
+        const hour = hourStr.split(":").slice(0, 2).join(":"); // ex 12:00
+
+        if (!bookedSlotsByDate[dateKey]) {
+          bookedSlotsByDate[dateKey] = [];
         }
-        bookedSlotsByDate[dateStr].push(hour);
+
+        bookedSlotsByDate[dateKey].push(hour);
       });
 
-      console.log("📦 Zile ocupate procesate:", bookedSlotsByDate);
+      console.log(" Zile ocupate procesate:", bookedSlotsByDate);
 
       generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
     });
