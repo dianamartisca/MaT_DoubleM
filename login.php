@@ -1,11 +1,11 @@
 <?php
 session_start();
-if(isset($_SESSION['user'])) {
+if (isset($_SESSION['user'])) {
     header("Location: dashboard.php");
     exit();
 }
 
-if(isset($_POST['user']) && isset($_POST['pass'])) {
+if (isset($_POST['user']) && isset($_POST['pass'])) {
     $url = 'http://localhost/MaT_DoubleM/my-php-backend/public/index.php/login';
 
     $postData = [
@@ -30,21 +30,24 @@ if(isset($_POST['user']) && isset($_POST['pass'])) {
             $_SESSION['jwt'] = $data['token'];
             header("Location:dashboard.php");
             exit();
-    } else {
-        $error = 'Doar administratorii pot accesa dashboard-ul!';
-    }
-}}
+        } else
+            $error = 'Doar administratorii pot accesa dashboard-ul!';
+    }else
+     $error = 'Utilizator inexistent sau parola gresita.';
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
     <title>Formular de login</title>
     <link rel="stylesheet" href="css/login.css">
 </head>
+
 <body>
     <div class="formular">
-        <form method="POST" action="">
+        <form method="POST" action="login.php">
             <label for="username">Nume admin:</label>
             <input type="text" name="user" id="username" placeholder="Nume admin" required>
 
@@ -52,10 +55,14 @@ if(isset($_POST['user']) && isset($_POST['pass'])) {
             <input type="password" name="pass" id="password" placeholder="Parola" required>
 
             <input type="submit" value="Autentificare" class="submit">
+
+            <?php if (!empty($error)): ?>
+                <div class="error-message"><?= htmlspecialchars($error) ?></div>
+            <?php endif; ?>
+
         </form>
-        <?php if (isset($error)): ?>
-            <p style="color:red;"><?php echo htmlspecialchars($error); ?></p>
-        <?php endif; ?>
+
     </div>
 </body>
+
 </html>

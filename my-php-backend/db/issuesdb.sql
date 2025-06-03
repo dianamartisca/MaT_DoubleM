@@ -7,7 +7,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-CREATE TABLE `users` (
+CREATE OR REPLACE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `user_name` varchar(255) NOT NULL,
@@ -23,7 +23,7 @@ INSERT INTO `users` (`id`, `name`, `user_name`, `email`, `password`, `role`) VAL
 (1, 'Popescu Ana', 'Anika', 'ania@uaic.ro', 'xpass', 'client'),
 (2, 'Admin', 'admin', 'admin@example.com', '1234', 'admin');
 
-CREATE TABLE `requests` (
+CREATE OR REPLACE TABLE `requests` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL, 
   `email` varchar(255) NOT NULL, 
@@ -37,7 +37,7 @@ CREATE TABLE `requests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-CREATE TABLE IF NOT EXISTS comenzi_furnizori (
+CREATE OR REPLACE TABLE IF NOT EXISTS comenzi_furnizori (
     id INT AUTO_INCREMENT PRIMARY KEY,
     produs VARCHAR(255),
     furnizor VARCHAR(255),
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS comenzi_furnizori (
 );
 
 
-CREATE TABLE IF NOT EXISTS piese (
+CREATE OR REPLACE TABLE piese (
   id INT AUTO_INCREMENT PRIMARY KEY,
   denumire VARCHAR(100),
   categorie VARCHAR(50),
