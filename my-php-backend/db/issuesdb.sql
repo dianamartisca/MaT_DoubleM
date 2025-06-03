@@ -54,9 +54,9 @@ CREATE TABLE IF NOT EXISTS piese (
 );
 
 INSERT INTO `piese` (`id`, `denumire`, `categorie`,`cantitate`) VALUES
-(1, 'Plăcuțe frână auto','Masini',20),
-(2, 'Lanț bicicletă', 'Biciclete', 35),
-(3, 'Baterie trotinetă electrică', 'Trotinete', 12);
+(1, 'Placute frana auto','Masini',20),
+(2, 'Lant bicicleta', 'Biciclete', 35),
+(3, 'Baterie trotineta electrica', 'Trotinete', 12);
 
 
 COMMIT;

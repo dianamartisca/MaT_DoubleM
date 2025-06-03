@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   })
     .then(res => res.json())
     .then(data => {
+      console.log(data);
       tbody.innerHTML = "";
       data.forEach(item => {
         const row = document.createElement("tr");
