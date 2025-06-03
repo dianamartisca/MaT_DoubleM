@@ -93,4 +93,56 @@ class RequestController
             echo json_encode(["error" => "Eroare la resetarea statusului"]);
         }
     }
+
+    public function respond()
+    {
+        $id = $_POST['id'] ?? null;
+        $response = $_POST['response'] ?? null;
+
+        if (!$id || !$response) {
+            echo json_encode(['error' => 'Date lipsă']);
+            exit;
+        }
+
+        $db = new Database();
+        $conn = $db->getConnection();
+        $stmt = $conn->prepare("SELECT email, name FROM requests WHERE id = ?");
+        $stmt->execute([$id]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            echo json_encode(['error' => 'Cerere inexistentă']);
+            exit;
+        }
+
+        // PHPMailer
+        require_once __DIR__ . '/../../vendor/autoload.php';
+        $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
+
+        try {
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'dianamariamartisca@gmail.com'; 
+            $mail->Password = 'dbjp owtn yfew ibaw'; 
+            $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+
+            $mail->setFrom('dianamariamartisca@gmail.com', 'Nume Expeditor');
+            $mail->addAddress($row['email'], $row['name']);
+
+            $mail->Subject = 'Răspuns la cererea ta';
+            $mail->Body    = "Bună, {$row['name']}!\n\nRăspunsul la cererea ta:\n\n" . $response;
+
+            $mail->send();
+
+            // Dacă emailul s-a trimis, salvează răspunsul în DB
+            $stmt = $conn->prepare("UPDATE requests SET response = ?, status = 'raspuns trimis' WHERE id = ?");
+            $stmt->execute([$response, $id]);
+            echo json_encode(['message' => 'Răspuns trimis pe email!']);
+        } catch (\PHPMailer\PHPMailer\Exception $e) {
+            echo json_encode(['error' => 'Eroare la trimiterea emailului: ' . $mail->ErrorInfo]);
+        }
+        exit;
+    }
 }

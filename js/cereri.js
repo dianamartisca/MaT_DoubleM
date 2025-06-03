@@ -180,3 +180,27 @@ function editRequest(id, button) {
       }
     });
 }
+
+function submitResponse(id, button) {
+  const jwt = localStorage.getItem('jwt');
+  const textarea = button.previousElementSibling;
+  const response = textarea.value;
+
+  fetch('/MaT_DoubleM/my-php-backend/public/index.php/requests/respond', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Bearer ' + jwt
+    },
+    body: `id=${encodeURIComponent(id)}&response=${encodeURIComponent(response)}`
+  })
+    .then(res => res.json())
+    .then(resp => {
+      if (resp.message) {
+        alert("Răspunsul a fost trimis pe email!");
+        location.reload();
+      } else {
+        alert(resp.error || "Eroare la trimiterea răspunsului");
+      }
+    });
+}
