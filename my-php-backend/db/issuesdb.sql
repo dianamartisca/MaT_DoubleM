@@ -58,6 +58,9 @@ INSERT INTO `piese` (`id`, `denumire`, `categorie`,`cantitate`) VALUES
 (2, 'Lant bicicleta', 'Biciclete', 35),
 (3, 'Baterie trotineta electrica', 'Trotinete', 12);
 
+INSERT INTO users (name, user_name, email, password, role) VALUES 
+('Tractoristu', 'bucsa', 'bucsa@email.com', '1234', 'mecanic');
+
 
 COMMIT;
 

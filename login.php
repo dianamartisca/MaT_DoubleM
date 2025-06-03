@@ -5,7 +5,8 @@ if (isset($_SESSION['user'])) {
     exit();
 }
 
-if (isset($_POST['user']) && isset($_POST['pass'])) {
+if (isset($_POST['user']) && isset($_POST['pass'])) 
+{
     $url = 'http://localhost/MaT_DoubleM/my-php-backend/public/index.php/login';
 
     $postData = [
