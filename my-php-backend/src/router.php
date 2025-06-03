@@ -62,7 +62,7 @@ function routeRequest($method, $uri)
                         http_response_code(400);
                         echo json_encode(["error" => "ID lipsa"]);
                     }
-                } else if ($action === 'delete') {
+                } elseif ($action === 'delete') {
                     $id = $_POST['id'] ?? null;
                     if ($id) {
                         $requestController->delete($id);
@@ -78,6 +78,10 @@ function routeRequest($method, $uri)
                         http_response_code(400);
                         echo json_encode(["error" => "ID lipsa pentru resetare"]);
                     }
+                } elseif ($action === 'respond') {
+                    // NOU: răspunde la cerere și trimite email
+                    requireAuth('admin');
+                    $requestController->respond();
                 } else {
                     $name = $_POST['name'];
                     $email = $_POST['email'];
