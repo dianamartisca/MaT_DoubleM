@@ -50,7 +50,22 @@
 
   </div>
 
-  <script src="js/comenzi-furnizori.js">
-  </script>
+  <!-- Import/Export Comenzi Furnizori -->
+  <div class="import-export-section">
+    <h3>Import/Export comenzi furnizori</h3>
+    <form action="my-php-backend/src/config/comenzi/import_comenzi.php" method="post" enctype="multipart/form-data" class="import-form">
+      <span>Importă comenzi (CSV sau JSON):</span>
+      <input type="file" name="import_file" accept=".csv,.json" required>
+      <button type="submit" class="import-btn">Import</button>
+    </form>
+    <div>
+      <span>Exportă comenzi:</span>
+      <a href="my-php-backend/src/config/comenzi/export_comenzi.php?format=csv" class="export-btn">CSV</a>
+      <a href="my-php-backend/src/config/comenzi/export_comenzi.php?format=json" class="export-btn">JSON</a>
+      <a href="my-php-backend/src/config/comenzi/export_comenzi.php?format=pdf" class="export-btn">PDF</a>
+    </div>
+  </div>
+
+  <script src="js/comenzi-furnizori.js"></script>
 </body>
 </html>
