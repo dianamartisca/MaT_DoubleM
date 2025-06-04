@@ -33,7 +33,7 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
         } else
             $error = 'Doar administratorii pot accesa dashboard-ul!';
     }else
-     $error = 'Utilizator inexistent sau parola gresita.';
+     $error = 'Utilizator inexistent sau parolă greșită.';
 }
 ?>
 

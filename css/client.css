@@ -52,6 +52,7 @@ button[type="submit"]
 {
   border:none;
   background-color:#DC5F00;
+  color: white;
   padding:10px;
   border-radius:10px;
   cursor:pointer;
@@ -61,14 +62,13 @@ button[type="submit"]
 .left-part 
 {
   width: 250px;
-  height:800px;
+  height: 1065px; 
   padding: 20px;
   background-color: rgb(247, 206, 191);
   border-radius: 10px;
   box-shadow: 2px 2px 8px;
   font-family: sans-serif;
   margin-right: 40px;
-  
 }
 
 
@@ -135,4 +135,34 @@ img
   padding: 10px;
   border-radius: 8px;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.review-form {
+  margin-top: 30px;
+  background: #fff8f0;
+  padding: 15px 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.08);
+  font-size: 15px;
+}
+.review-form input,
+.review-form textarea {
+  width: 100%;
+  margin-top: 3px;
+  margin-bottom: 10px;
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+.review-form button[type="submit"] {
+  background: #DC5F00;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
 }

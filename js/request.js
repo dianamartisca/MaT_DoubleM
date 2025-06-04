@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const form = document.querySelector('form');
+  const form = document.querySelector('.reserv-form'); // selectează doar formularul de programare
+
+  if (!form) return;
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
