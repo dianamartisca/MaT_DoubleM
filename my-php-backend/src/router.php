@@ -52,7 +52,7 @@ function routeRequest($method, $uri)
                         $requestController->approve($id);
                     } else {
                         http_response_code(400);
-                        echo json_encode(["error" => "ID lipsa"]);
+                        echo json_encode(["error" => "ID lipsă"]);
                     }
                 } elseif ($action === 'reject') {
                     $id = $_POST['id'] ?? null;
@@ -60,7 +60,7 @@ function routeRequest($method, $uri)
                         $requestController->reject($id);
                     } else {
                         http_response_code(400);
-                        echo json_encode(["error" => "ID lipsa"]);
+                        echo json_encode(["error" => "ID lipsă"]);
                     }
                 } elseif ($action === 'done') {
                     $id = $_POST['id'] ?? null;
@@ -75,7 +75,7 @@ function routeRequest($method, $uri)
                         $requestController->delete($id);
                     } else {
                         http_response_code(400);
-                        echo json_encode(["error" => "ID lipsa pentru stergere"]);
+                        echo json_encode(["error" => "ID lipsă pentru stergere"]);
                     }
                 } elseif ($action === 'reset-status') {
                     $id = $_POST['id'] ?? null;
@@ -83,23 +83,22 @@ function routeRequest($method, $uri)
                         $requestController->resetStatus($id);
                     } else {
                         http_response_code(400);
-                        echo json_encode(["error" => "ID lipsa pentru resetare"]);
+                        echo json_encode(["error" => "ID lipsă pentru resetare"]);
                     }
                 } elseif ($action === 'respond') {
-                    // NOU: răspunde la cerere și trimite email
                     requireAuth('admin');
                     $requestController->respond();
                 } else {
                     $name = $_POST['name'];
                     $email = $_POST['email'];
                     $problemType = $_POST['problem_type'];
-
                     $date_requested = $_POST['date_requested'];
-                    $date_requested = DateTime::createFromFormat('Y-m-d H:i', trim($date_requested));
+                    $date_requested = str_replace('ora', '', $date_requested);
+                    $date_requested = DateTime::createFromFormat('d.m.Y H:i', trim($date_requested));
                     if ($date_requested) {
                         $dateRequested = $date_requested->format('Y-m-d H:i:s');
                     } else {
-                        sendError("Invalid date format. Received: " . $_POST['date_requested'], 400);
+                        sendError("Invalid date format.", 400);
                     }
                     $description = $_POST['description'];
 
@@ -125,8 +124,7 @@ function routeRequest($method, $uri)
                 break;
 
             case 'GET':
-                if (isset($_SERVER['HTTP_AUTHORIZATION']))
-                    requireAuth('admin');
+                requireAuth('admin');
                 $requestController->getRequests();
                 break;
 
@@ -181,11 +179,22 @@ function routeRequest($method, $uri)
                     ]);
                     echo json_encode(['token' => $token]);
                 } else {
-                    sendError('Utilizator inexistent sau parola gresita', 401);
+                    sendError('Utilizator inexistent sau parolă greșită', 401);
                 }
             } else {
                 sendError('Date lipsă pentru autentificare', 400);
             }
+        } else {
+            http_response_code(405);
+            echo json_encode(['error' => 'Method not allowed']);
+        }
+    } elseif (in_array('reviews', $segments)) {
+        require_once 'controllers/ReviewController.php';
+        $reviewController = new ReviewController();
+        if ($method === 'POST') {
+            $reviewController->add();
+        } elseif ($method === 'GET') {
+            $reviewController->getAll();
         } else {
             http_response_code(405);
             echo json_encode(['error' => 'Method not allowed']);
