@@ -38,9 +38,9 @@ class OrderController {
     if ($success) {
         echo json_encode(['success' => true]);
     } else {
-        error_log("Inserare esuata în model.");
+        error_log("Inserare eșuată în model.");
         http_response_code(500);
-        echo json_encode(['error' => 'Inserare esuata']);
+        echo json_encode(['error' => 'Inserare eșuată']);
     }
 }
 }

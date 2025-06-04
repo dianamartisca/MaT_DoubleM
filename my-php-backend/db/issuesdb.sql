@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS reviews (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-CREATE OR REPLACE TABLE IF NOT EXISTS comenzi_furnizori (
+CREATE OR REPLACE TABLE comenzi_furnizori (
     id INT AUTO_INCREMENT PRIMARY KEY,
     produs VARCHAR(255),
     furnizor VARCHAR(255),

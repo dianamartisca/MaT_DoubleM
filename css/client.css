@@ -137,6 +137,10 @@ img
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
+.right-part h3 {
+  text-align: center;
+}
+
 .review-form {
   margin-top: 30px;
   background: #fff8f0;
