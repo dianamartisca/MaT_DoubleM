@@ -9,7 +9,7 @@
 
 <body>
 
-  
+
 
   <div class="everything">
 
@@ -19,14 +19,34 @@
       <p>Luni-Vineri: 10:00-17:00</p>
 
       <h3>Contact:</h3>
-      <p>📞 0755 691 390</p>
-      <p>✉️ doubleM@gmail.ro</p>
+      <p>📞0755 691 390</p>
+      <p>✉️doublemiasi@gmail.com</p>
 
-      
+
 
       <div class="admin-link">
-        <a href="login.php">Ești administrator?</a>
-      </div>  
+        <a href="login.php">Acces dashboard</a>
+      </div>
+      <!-- Formular review -->
+      <form class="review-form" method="POST" action="my-php-backend/public/index.php/reviews">
+        <h4>Lasă un review</h4>
+        <label>
+          Nume:<br>
+          <input type="text" name="name" required>
+        </label>
+        <br>
+        <label>
+          Email:<br>
+          <input type="email" name="email" required>
+        </label>
+        <br>
+        <label>
+          Review:<br>
+          <textarea name="text" rows="4" style="width: 100%;" required></textarea>
+        </label>
+        <br>
+        <button type="submit">Trimite review</button>
+      </form>
     </div>
 
 
@@ -54,42 +74,43 @@
       </div>
 
 
-      <form class="reserv-form" enctype="multipart/form-data" method="POST" action="my-php-backend/public/index.php/requests">
+      <form class="reserv-form" enctype="multipart/form-data" method="POST"
+        action="my-php-backend/public/index.php/requests">
         <h2>Formular de programare</h2>
-      
-        <label>Nume si prenume:
+
+        <label>Nume și prenume:
           <p></p>
           <input type="text" name="name" required>
         </label>
-      
+
         <label>Email:
           <p></p>
           <input type="email" name="email" required>
         </label>
-      
-        <label>Data si ora selectata:
+
+        <label>Data și ora selectate:
           <p></p>
           <input type="text" name="date_requested" readonly id="datetime" required>
         </label>
-      
+
         <label>Am probleme cu:
           <p></p>
-          <input type="radio" name="problem_type" value="Masina" checked>Masina
+          <input type="radio" name="problem_type" value="Masina" checked>Mașina
           <input type="radio" name="problem_type" value="Bicicleta">Bicicleta
           <input type="radio" name="problem_type" value="Trotineta">Trotineta
         </label>
-      
+
         <label>
-          Descriere Problema:
+          Descriere problemă:
           <p></p>
           <textarea name="description" class="textarea1"></textarea>
         </label>
-      
+
         <label>
-          Adauga imagini:
+          Adaugă imagini:
           <input type="file" name="images[]" multiple>
         </label>
-      
+
         <button type="submit">Trimite cererea</button>
       </form>
     </div>
@@ -100,7 +121,7 @@
 
       <h3>Recenzii clienți</h3>
       <div class="review">
-        
+
         <blockquote style="margin-bottom: 20px;">
           <div class="stars">⭐⭐⭐⭐⭐</div>
           „Mi-am adus bicicleta pentru o revizie generală. Au fost atenți la toate detaliile și au folosit piese de

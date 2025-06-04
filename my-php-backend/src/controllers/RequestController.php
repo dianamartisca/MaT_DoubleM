@@ -115,7 +115,6 @@ class RequestController
             exit;
         }
 
-        // PHPMailer
         require_once __DIR__ . '/../../vendor/autoload.php';
         $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
 
@@ -123,15 +122,15 @@ class RequestController
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'dianamariamartisca@gmail.com';
-            $mail->Password = 'dbjp owtn yfew ibaw';
+            $mail->Username = 'doublemiasi@gmail.com'; 
+            $mail->Password = 'qmme kzpd uvau eorc'; 
             $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom('dianamariamartisca@gmail.com', 'Nume Expeditor');
+            $mail->setFrom('doublemiasi@gmail.com', 'DoubleM');
             $mail->addAddress($row['email'], $row['name']);
 
-            $mail->Subject = 'Răspuns la cererea ta';
+            $mail->Subject = 'Raspuns la cererea ta';
             $mail->Body    = "Bună, {$row['name']}!\n\nRăspunsul la cererea ta:\n\n" . $response;
 
             $mail->send();
