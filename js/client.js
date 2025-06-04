@@ -76,13 +76,13 @@ function showHours(day, month, year) {
     } else {
       buton.className = 'good';
       buton.addEventListener('click', () => {
-        dateTime.value =  `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')} ${hour}`;
+        const zi = day.toString().padStart(2, '0');
+        const luna = (month + 1).toString().padStart(2, '0');
+        dateTime.value = `${zi}.${luna}.${year} ${hour}`;
       });
     }
 
     hoursAll.appendChild(buton);
-
-    
   });
 
   hoursPopup.style.display = 'block';

@@ -1,7 +1,12 @@
 <?php
 session_start();
 if (isset($_SESSION['user'])) {
-    header("Location: dashboard.php");
+    // Redirect based on role if already logged in
+    if (isset($_SESSION['role']) && $_SESSION['role'] === 'mecanic') {
+        header("Location: dashboard-mecanic.php");
+    } else {
+        header("Location: dashboard.php");
+    }
     exit();
 }
 
@@ -26,18 +31,23 @@ if (isset($_POST['user']) && isset($_POST['pass']))
 
     if ($httpcode === 200 && isset($data['token'])) {
         $payload = json_decode(base64_decode(explode('.', $data['token'])[1]), true);
+        $_SESSION['user'] = $_POST['user'];
+        $_SESSION['jwt'] = $data['token'];
+        $_SESSION['role'] = $payload['role'];
         if ($payload['role'] === 'admin') {
-            $_SESSION['user'] = $_POST['user'];
-            $_SESSION['jwt'] = $data['token'];
             header("Location:dashboard.php");
             exit();
-        } else
-            $error = 'Doar administratorii pot accesa dashboard-ul!';
-    }else
-     $error = 'Utilizator inexistent sau parolă greșită.';
+        } elseif ($payload['role'] === 'mecanic') {
+            header("Location:dashboard-mecanic.php");
+            exit();
+        } else {
+            $error = 'Doar administratorii sau mecanicii pot accesa dashboard-ul!';
+        }
+    } else {
+        $error = 'Utilizator inexistent sau parolă greșită.';
+    }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="ro">
 
@@ -49,8 +59,8 @@ if (isset($_POST['user']) && isset($_POST['pass']))
 <body>
     <div class="formular">
         <form method="POST" action="login.php">
-            <label for="username">Nume admin:</label>
-            <input type="text" name="user" id="username" placeholder="Nume admin" required>
+            <label for="username">Nume utilizator:</label>
+            <input type="text" name="user" id="username" placeholder="Nume utilizator" required>
 
             <label for="password">Parolă:</label>
             <input type="password" name="pass" id="password" placeholder="Parola" required>
@@ -62,8 +72,6 @@ if (isset($_POST['user']) && isset($_POST['pass']))
             <?php endif; ?>
 
         </form>
-
     </div>
 </body>
-
 </html>

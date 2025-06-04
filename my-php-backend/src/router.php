@@ -14,7 +14,7 @@ function requireAuth($requiredRole = null)
         exit;
     }
     $jwt = $matches[1];
-    $payload = validateJWT($jwt); // This should return the decoded payload if valid
+    $payload = validateJWT($jwt);
 
     if (!$payload) {
         http_response_code(401);
@@ -22,14 +22,24 @@ function requireAuth($requiredRole = null)
         exit;
     }
 
-    // Check role if required
-    if ($requiredRole && (!isset($payload['role']) || $payload['role'] !== $requiredRole)) {
-        http_response_code(403);
-        echo json_encode(['error' => 'Acces interzis']);
-        exit;
+    // Accept multiple roles
+    if ($requiredRole) {
+        if (is_array($requiredRole)) {
+            if (!isset($payload['role']) || !in_array($payload['role'], $requiredRole)) {
+                http_response_code(403);
+                echo json_encode(['error' => 'Acces interzis']);
+                exit;
+            }
+        } else {
+            if (!isset($payload['role']) || $payload['role'] !== $requiredRole) {
+                http_response_code(403);
+                echo json_encode(['error' => 'Acces interzis']);
+                exit;
+            }
+        }
     }
 
-    return $payload; // return payload if you need user info later
+    return $payload;
 }
 
 function routeRequest($method, $uri)
@@ -124,7 +134,8 @@ function routeRequest($method, $uri)
                 break;
 
             case 'GET':
-                requireAuth('admin');
+                if (isset($_SERVER['HTTP_AUTHORIZATION']))
+                    requireAuth(['admin', 'mecanic']);
                 $requestController->getRequests();
                 break;
 
@@ -147,7 +158,7 @@ function routeRequest($method, $uri)
                 echo json_encode(['error' => 'Method not allowed']);
         }
     } elseif (in_array('piese', $segments)) {
-        requireAuth('admin');
+        requireAuth(['admin', 'mecanic']);
         $controller = new StockController();
 
         if ($method == 'GET') {
