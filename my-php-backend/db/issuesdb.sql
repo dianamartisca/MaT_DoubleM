@@ -36,13 +36,14 @@ CREATE OR REPLACE TABLE `requests` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+ALTER TABLE requests ADD done TINYINT(1) DEFAULT 0;
+
 CREATE TABLE IF NOT EXISTS reviews (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   `text` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 CREATE OR REPLACE TABLE comenzi_furnizori (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -64,6 +65,9 @@ INSERT INTO `piese` (`id`, `denumire`, `categorie`,`cantitate`) VALUES
 (1, 'Placute frana auto','Masini',20),
 (2, 'Lant bicicleta', 'Biciclete', 35),
 (3, 'Baterie trotineta electrica', 'Trotinete', 12);
+
+INSERT INTO users (name, user_name, email, password, role) VALUES 
+('Tractoristu', 'bucsa', 'bucsa@email.com', '1234', 'mecanic');
 
 
 COMMIT;

@@ -40,7 +40,7 @@ function routeRequest($method, $uri)
     if (in_array('requests', $segments)) {
         $requestController = new RequestController();
 
-        // caută poziția lui 'requests' ca să afli ce urmează dupa
+
         $pos = array_search('requests', $segments);
         $action = $segments[$pos + 1] ?? null;
 
@@ -61,6 +61,13 @@ function routeRequest($method, $uri)
                     } else {
                         http_response_code(400);
                         echo json_encode(["error" => "ID lipsă"]);
+                    }
+                } elseif ($action === 'done') {
+                    $id = $_POST['id'] ?? null;
+                    if ($id) {
+                        $requestController->markDone($id);
+                    } else {
+                        sendError("ID lipsă pentru DONE", 400);
                     }
                 } elseif ($action === 'delete') {
                     $id = $_POST['id'] ?? null;
