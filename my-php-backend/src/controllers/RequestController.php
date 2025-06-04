@@ -122,12 +122,12 @@ class RequestController
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'dianamariamartisca@gmail.com'; 
-            $mail->Password = 'dbjp owtn yfew ibaw'; 
+            $mail->Username = 'doublemiasi@gmail.com'; 
+            $mail->Password = 'qmme kzpd uvau eorc'; 
             $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom('dianamariamartisca@gmail.com', 'Nume Expeditor');
+            $mail->setFrom('doublemiasi@gmail.com', 'DoubleM');
             $mail->addAddress($row['email'], $row['name']);
 
             $mail->Subject = 'Raspuns la cererea ta';
