@@ -12,20 +12,19 @@ h1 {
 
 h2 {
   margin-top: 40px;
-  
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
   table-layout: fixed;
 }
 
-
-th, td {
+th,
+td {
   text-align: center;
   padding: 12px 15px;
   border-bottom: 1px solid #ccc;
@@ -49,12 +48,11 @@ textarea {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #bbb;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease;
 }
 
-textarea:focus  /*pt color change cand scrii noice */
-{
+textarea:focus  /*pt color change cand scrii noice */ {
   border-color: #007f6e;
   outline: none;
 }
@@ -68,7 +66,6 @@ textarea:focus  /*pt color change cand scrii noice */
   cursor: pointer;
   font-weight: bold;
 } */
-
 
 .approve-btn {
   background-color: #28a745;
@@ -103,7 +100,7 @@ textarea:focus  /*pt color change cand scrii noice */
 /*last button i hope*/
 
 .send {
-  background-color:#DC5F00 ;
+  background-color: #dc5f00;
   color: white;
   padding: 8px 16px;
   border: none;
@@ -118,8 +115,8 @@ td .send {
   margin: 0 auto;
 }
 
-.edit-btn{
-  background-color:#DC5F00 ;
+.edit-btn {
+  background-color: #dc5f00;
   color: white;
   padding: 8px 16px;
   border: none;
@@ -128,8 +125,7 @@ td .send {
   font-weight: bold;
 }
 
-.delete-btn
-{
+.delete-btn {
   background-color: #dc3545;
   color: white;
   padding: 8px 16px;
@@ -140,7 +136,7 @@ td .send {
 }
 
 .export-btn {
-  background-color: #DC5F00;
+  background-color: #dc5f00;
   color: #fff;
   padding: 10px 20px;
   border: 2px solid #333;
@@ -153,7 +149,7 @@ td .send {
 }
 .export-btn:hover {
   background-color: #333;
-  color: #DC5F00;
+  color: #dc5f00;
 }
 
 .import-export-section {
@@ -164,14 +160,14 @@ td .send {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   border-radius: 12px;
 }
 
 .import-export-section h3 {
   margin-top: 0;
   margin-bottom: 18px;
-  color: #DC5F00;
+  color: #dc5f00;
   text-align: center;
 }
 
@@ -192,7 +188,7 @@ td .send {
 }
 
 .import-btn {
-  background-color: #28a745;   /* verde */
+  background-color: #28a745; /* verde */
   color: white;
   padding: 8px 18px;
   border: none;
@@ -203,12 +199,11 @@ td .send {
 }
 
 .import-btn:hover {
-  background-color: #218838;   /* verde mai închis la hover */
+  background-color: #218838; /* verde mai închis la hover */
 }
 
-.done-btn
-{
-  background-color:#DC5F00 ;
+.done-btn {
+  background-color: #dc5f00;
   color: white;
   padding: 8px 16px;
   border: none;

@@ -92,11 +92,11 @@ class Request
     }
 
 
-   public function markAsDone($id)
-{
-    $query = "UPDATE " . $this->table . " SET done = 1 WHERE id = :id";
-    $stmt = $this->conn->prepare($query);
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    return $stmt->execute();
-}
+    public function markAsDone($id)
+    {
+        $query = "UPDATE " . $this->table . " SET done = 1 WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 }

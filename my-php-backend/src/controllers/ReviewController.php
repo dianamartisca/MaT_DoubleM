@@ -1,8 +1,10 @@
 <?php
 require_once dirname(__DIR__) . '/config/database.php';
 
-class ReviewController {
-    public function add() {
+class ReviewController
+{
+    public function add()
+    {
         $name = $_POST['name'] ?? '';
         $email = $_POST['email'] ?? '';
         $text = $_POST['text'] ?? '';
@@ -25,7 +27,8 @@ class ReviewController {
         }
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         $db = new Database();
         $conn = $db->getConnection();
         $stmt = $conn->query("SELECT name, text FROM reviews ORDER BY id DESC");

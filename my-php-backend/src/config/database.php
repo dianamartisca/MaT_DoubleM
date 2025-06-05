@@ -1,5 +1,6 @@
 <?php
-class Database {
+class Database
+{
     private $host = '127.0.0.1';
     private $db_name = 'issuesdb';
     private $username = 'root';
@@ -7,7 +8,8 @@ class Database {
     private $charset = 'utf8mb4';
     public $conn;
 
-    public function getConnection() {
+    public function getConnection()
+    {
         $this->conn = null;
 
         try {
@@ -21,4 +23,3 @@ class Database {
         return $this->conn;
     }
 }
-?>

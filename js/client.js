@@ -100,12 +100,11 @@ function loadApprovedRequestsAndRenderCalendar() {
 
 
       aprobate.forEach(r => {
-        // const [dateStr, hourStr] = r.date_requested.split(" ");
-        // const hour = hourStr.substring(0, 5);
+        
 
-       const [dateStr, hourStr] = r.date_requested.split(" ");
-        const dateKey = dateStr; // ex 2025-06-24
-        const hour = hourStr.split(":").slice(0, 2).join(":"); // ex 12:00
+        const [dateStr, hourStr] = r.date_requested.split(" ");
+        const dateKey = dateStr; 
+        const hour = hourStr.split(":").slice(0, 2).join(":"); 
 
         if (!bookedSlotsByDate[dateKey]) {
           bookedSlotsByDate[dateKey] = [];

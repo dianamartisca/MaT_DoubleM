@@ -1,68 +1,59 @@
-body
-{
-  background:#686D76;
+body {
+  background: #686d76;
   font-family: sans-serif;
-  
 }
 
-.minipage{
-  
-  background:#EEEEEE;
-  padding:30px;
-  border-radius:16px;
-  box-shadow:0 0 8px;
+.minipage {
+  background: #eeeeee;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 8px;
 }
 
-.calendar-header{
-  display:flex;
+.calendar-header {
+  display: flex;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
 }
 
-
-.days{ /*de terminat dupa forms*/
-  display:grid;
-  grid-template-columns: repeat(7,1fr); /*7 col uniform*/
-  gap:15px;
-  margin-top:10px;
+.days {
+  /*de terminat dupa forms*/
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /*7 col uniform*/
+  gap: 15px;
+  margin-top: 10px;
 }
 
-.days button{
-  padding:10px;
-  border:none;
-  cursor:pointer;
+.days button {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
   background-color: lightgreen;
-  border-radius:5px;
-  
+  border-radius: 5px;
 }
-.days button.not-good
-{
+.days button.not-good {
   background-color: lightcoral;
-  cursor:not-allowed;
+  cursor: not-allowed;
 }
 
-form
-{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-button[type="submit"]
-{
-  border:none;
-  background-color:#DC5F00;
+button[type="submit"] {
+  border: none;
+  background-color: #dc5f00;
   color: white;
-  padding:10px;
-  border-radius:10px;
-  cursor:pointer;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-
-.left-part 
-{
+.left-part {
   width: 250px;
-  height: 1065px; 
+  height: 1065px;
   padding: 20px;
   background-color: rgb(247, 206, 191);
   border-radius: 10px;
@@ -71,21 +62,16 @@ button[type="submit"]
   margin-right: 40px;
 }
 
-
-
-.right-part 
-{
+.right-part {
   width: 250px;
-  height:1065px;
+  height: 1065px;
   padding: 20px;
   background-color: rgb(247, 206, 191);
   border-radius: 10px;
   box-shadow: 2px 2px 8px;
   font-family: sans-serif;
   margin-left: 40px;
-  
 }
-
 
 .hours-popup {
   margin: 20px 0;
@@ -99,30 +85,26 @@ button[type="submit"]
   border: none;
   border-radius: 8px;
   background-color: lightgreen;
-  cursor:pointer;
+  cursor: pointer;
 }
-.hours button.not-good
-{
+.hours button.not-good {
   background-color: lightcoral;
-  cursor:not-allowed;
+  cursor: not-allowed;
 }
 
-.textarea1
-{
-  height:100px;
-  width:400px;
+.textarea1 {
+  height: 100px;
+  width: 400px;
 }
 
-.everything
-{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap:20px;
-    padding: 30px 320px;
+.everything {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 30px 320px;
 }
-img
-{
+img {
   display: block;
   width: 200px;
   margin: 0 auto;
@@ -130,11 +112,11 @@ img
 }
 
 .right-part blockquote {
-  width:170px;
+  width: 170px;
   background-color: #fff8f0;
   padding: 10px;
   border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .right-part h3 {
@@ -146,7 +128,7 @@ img
   background: #fff8f0;
   padding: 15px 10px;
   border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.08);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);
   font-size: 15px;
 }
 .review-form input,
@@ -162,11 +144,44 @@ img
   box-sizing: border-box;
 }
 .review-form button[type="submit"] {
-  background: #DC5F00;
+  background: #dc5f00;
   color: white;
   border: none;
   padding: 8px 20px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 15px;
+}
+
+
+
+/* probleme responsive de refacut
+
+*/
+
+@media screen and (max-width: 768px)  /*mici*/
+{
+  .left-part {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .everything {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 769px) /*mari*/
+{
+  .everything {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .left-part {
+    width: 250px;
+    height: auto;
+  }
 }

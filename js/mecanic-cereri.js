@@ -63,23 +63,23 @@ function displayRequests(requests) {
 
 
     const btn = row.querySelector('.done-btn');
-  btn.addEventListener('click', () => {
-  fetch('http://localhost/MaT_DoubleM/my-php-backend/public/index.php/requests/done', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `id=${req.id}`
-  })
-  .then(res => res.json())
-  .then(result => {
-    if (result.success) {
-      btn.replaceWith('DONE');
-      row.classList.add('completed');
-    } else {
-      alert("Eroare la salvare în DB");
-    }
-  });
+    btn.addEventListener('click', () => {
+      fetch('http://localhost/MaT_DoubleM/my-php-backend/public/index.php/requests/done', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `id=${req.id}`
+      })
+        .then(res => res.json())
+        .then(result => {
+          if (result.success) {
+            btn.replaceWith('DONE');
+            row.classList.add('completed');
+          } else {
+            alert("Eroare la salvare în DB");
+          }
+        });
 
-  });
+    });
 
   });
 }

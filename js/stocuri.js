@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
         .then(res => res.json())
         .then(result => {
-         // alert(result.message || result.error);
+          // alert(result.message || result.error);
           location.reload();
         });
     });

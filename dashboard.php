@@ -14,9 +14,9 @@ if (!isset($_SESSION['user'])) {
 </head>
 <link rel="stylesheet" href="css/dashboard.css">
 <?php if (isset($_SESSION['jwt'])): ?>
-<script>
-  localStorage.setItem('jwt', '<?php echo $_SESSION['jwt']; ?>');
-</script>
+  <script>
+    localStorage.setItem('jwt', '<?php echo $_SESSION['jwt']; ?>');
+  </script>
 <?php endif; ?>
 
 <body>

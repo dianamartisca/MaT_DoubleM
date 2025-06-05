@@ -1,55 +1,53 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #686D76;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #686d76;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  align-items: center;
 }
 
 label {
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-    width: 100%;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  width: 100%;
+  text-align: left;
 }
 
 input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 5px;
-    width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  width: 250px;
 }
 
-.submit{
-    background-color: #DC5F00;
-    
+.submit {
+  background-color: #dc5f00;
 }
 
 .formular {
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /*eroare finnaly*/
 .error-message {
-    color: red;
-    font-weight: bold;
-    margin-top: 10px;
-    text-align: center;
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
 }

@@ -1,5 +1,4 @@
-body
-{
+body {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,19 +8,16 @@ body
   text-align: center;
 }
 
-
-.img
-{
+.img {
   width: 100px;
   height: auto;
 }
-.go-back
-{
-display:inline-block; 
-margin-top:20px; 
-padding:10px 20px; 
-background-color:#ff6600; 
-color:white; 
-border-radius:5px; 
-text-decoration:none;
+.go-back {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff6600;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
 }

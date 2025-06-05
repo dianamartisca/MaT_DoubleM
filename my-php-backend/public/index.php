@@ -12,4 +12,3 @@ try {
 } catch (Exception $e) {
     sendError($e->getMessage(), 500);
 }
-?>

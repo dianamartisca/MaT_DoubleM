@@ -5,9 +5,10 @@ require_once __DIR__ . '/../../vendor/Key.php';
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-const JWT_SECRET = 'doubleMsecretkey'; 
+const JWT_SECRET = 'doubleMsecretkey';
 
-function generateJWT($payload, $expMinutes = 60) {
+function generateJWT($payload, $expMinutes = 60)
+{
     $issuedAt = time();
     $expire = $issuedAt + ($expMinutes * 60);
     $payload['iat'] = $issuedAt;
@@ -15,7 +16,8 @@ function generateJWT($payload, $expMinutes = 60) {
     return JWT::encode($payload, JWT_SECRET, 'HS256');
 }
 
-function validateJWT($jwt) {
+function validateJWT($jwt)
+{
     try {
         $decoded = JWT::decode($jwt, new Key(JWT_SECRET, 'HS256'));
         return (array)$decoded;
@@ -23,4 +25,3 @@ function validateJWT($jwt) {
         return false;
     }
 }
-?>

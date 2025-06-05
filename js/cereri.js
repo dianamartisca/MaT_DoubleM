@@ -46,24 +46,24 @@ function displayRequests(requests) {
   </td>
   <td>
   ${req.status === "aprobata" || req.status === "respinsa"
-    ? "-"
-    : `<textarea placeholder="Scrie raspunsul..."></textarea>
+        ? "-"
+        : `<textarea placeholder="Scrie raspunsul..."></textarea>
        <button class="send" onclick="submitResponse(${req.id}, this)">Trimite</button>`}
 </td>
 
   <td>
   ${req.status === "aprobata"
-    ? `<b style='color:green'>Aprobat</b><br>
+        ? `<b style='color:green'>Aprobat</b><br>
        <button class="edit-btn" onclick="editRequest(${req.id}, this)">Editează</button>
        <button class="delete-btn" onclick="deleteRequest(${req.id}, this)">Șterge</button>`
-    : req.status === "respinsa"
-      ? `<b style='color:red'>Respins</b><br>
+        : req.status === "respinsa"
+          ? `<b style='color:red'>Respins</b><br>
          <button class="edit-btn" onclick="editRequest(${req.id}, this)">Editează</button>
          <button class="delete-btn" onclick="deleteRequest(${req.id}, this)">Șterge</button>`
-      : `
+          : `
          <button class="approve-btn" onclick="approveRequest(${req.id}, this)">Aprobă</button>
          <button class="reject-btn" onclick="rejectRequest(${req.id}, this)">Respinge</button>`
-  }
+      }
 </td>
 `;
 
@@ -97,7 +97,7 @@ function approveRequest(id, button) {
     .then(res => res.json())
     .then(resp => {
       if (resp.message) {
-        // button.parentElement.innerHTML = "<b style='color:green'>Aprobat</b>";
+       
 
         button.parentElement.innerHTML = `
   <b style='color:green'>Aprobat</b><br>
@@ -123,9 +123,9 @@ function rejectRequest(id, button) {
     .then(res => res.json())
     .then(resp => {
       if (resp.message) {
-       // button.parentElement.innerHTML = "<b style='color:red'>Respins</b>";
+       
 
-       button.parentElement.innerHTML = `
+        button.parentElement.innerHTML = `
   <b style='color:red'>Respins</b><br>
   <button class="edit-btn" onclick="editRequest(${id}, this)">Editează</button>
   <button class="delete-btn" onclick="deleteRequest(${id}, this)">Șterge</button>
