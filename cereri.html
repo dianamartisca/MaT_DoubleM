@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
   <link rel="stylesheet" href="css/cereri.css">
 
 </head>
+
 <body>
 
- 
+
 
   <h1>Cereri de programare</h1>
 
@@ -22,7 +24,7 @@
         <th>Descriere problemă</th>
         <th>Fișiere</th>
         <th>Răspuns</th>
-        
+
         <th>Aprobare</th>
       </tr>
     </thead>
@@ -48,7 +50,7 @@
         <th>Descriere problemă</th>
         <th>Fișiere</th>
         <th>Răspuns</th>
-        
+
         <th>Aprobare</th>
       </tr>
     </thead>
@@ -74,9 +76,9 @@
         <th>Descriere problemă</th>
         <th>Fișiere</th>
         <th>Răspuns</th>
-        
+
         <th>Aprobare</th>
-        
+
       </tr>
     </thead>
     <tbody id="trotinete">
@@ -95,7 +97,8 @@
   <!-- Formular import și butoane export, cu clasă pentru stilizare -->
   <div class="import-export-section">
     <h3>Import/Export cereri</h3>
-    <form action="my-php-backend/src/config/cereri/import_cereri.php" method="post" enctype="multipart/form-data" class="import-form">
+    <form action="my-php-backend/src/config/cereri/import_cereri.php" method="post" enctype="multipart/form-data"
+      class="import-form">
       <span>Importă cereri (CSV sau JSON):</span>
       <input type="file" name="import_file" id="import_file" accept=".csv,.json" required>
       <button type="submit" class="import-btn">Import</button>
@@ -107,6 +110,7 @@
       <a href="my-php-backend/src/config/cereri/export_cereri.php?format=pdf" class="export-btn">PDF</a>
     </div>
   </div>
-  <script src="js/cereri.js"></script>  
+  <script src="js/cereri.js"></script>
 </body>
+
 </html>

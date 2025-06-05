@@ -14,10 +14,11 @@ table {
   border-collapse: collapse;
   margin-top: 30px;
   background-color: #fff;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
+th,
+td {
   padding: 12px 15px;
   border-bottom: 1px solid #ccc;
 }
@@ -29,7 +30,7 @@ th {
 
 .edit-btn {
   padding: 6px 12px;
-  background-color: #DC5F00;
+  background-color: #dc5f00;
   color: white;
   border: none;
   border-radius: 5px;
@@ -43,7 +44,7 @@ form#addForm {
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
@@ -61,7 +62,7 @@ form#addForm input {
 
 form#addForm button {
   padding: 10px 20px;
-  background-color: #DC5F00;
+  background-color: #dc5f00;
   color: white;
   border: none;
   border-radius: 6px;
@@ -83,14 +84,14 @@ form#addForm button:hover {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   border-radius: 12px;
 }
 
 .import-export-section h3 {
   margin-top: 0;
   margin-bottom: 18px;
-  color: #DC5F00;
+  color: #dc5f00;
   text-align: center;
 }
 
@@ -122,7 +123,7 @@ form#addForm button:hover {
 }
 
 .export-btn {
-  background-color: #DC5F00;
+  background-color: #dc5f00;
   color: #fff;
   padding: 10px 20px;
   border: 2px solid #333;
@@ -135,5 +136,5 @@ form#addForm button:hover {
 }
 .export-btn:hover {
   background-color: #333;
-  color: #DC5F00;
+  color: #dc5f00;
 }

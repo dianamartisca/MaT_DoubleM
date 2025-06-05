@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Review form submit
   const reviewForm = document.querySelector('.review-form');
   if (reviewForm) {
-    reviewForm.addEventListener('submit', async function(e) {
+    reviewForm.addEventListener('submit', async function (e) {
       e.preventDefault();
       const formData = new FormData(reviewForm);
       const response = await fetch('http://localhost/MaT_DoubleM/my-php-backend/public/index.php/reviews', {

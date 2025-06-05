@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../database.php'; 
+require_once __DIR__ . '/../database.php';
 
 $db = new Database();
 $conn = $db->getConnection();
@@ -57,4 +57,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['import_file'])) {
 } else {
     echo "Niciun fișier încărcat!";
 }
-?>

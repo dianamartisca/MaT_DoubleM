@@ -4,21 +4,21 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!form) return;
 
   form.addEventListener('submit', async function (e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  const formData = new FormData(form);
+    const formData = new FormData(form);
 
-  const response = await fetch(form.action, {
-    method: 'POST',
-    body: formData
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (result.message === "Request created successfully.") {
+      window.location.href = 'request-confirmation.html';
+    } else {
+      alert('Eroare: ' + JSON.stringify(result));
+    }
   });
-
-  const result = await response.json();
-
-  if (result.message === "Request created successfully.") {
-    window.location.href = 'request-confirmation.html';
-  } else {
-    alert('Eroare: ' + JSON.stringify(result));
-  }
-});
 });

@@ -122,8 +122,8 @@ class RequestController
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'doublemiasi@gmail.com'; 
-            $mail->Password = 'qmme kzpd uvau eorc'; 
+            $mail->Username = 'doublemiasi@gmail.com';
+            $mail->Password = 'qmme kzpd uvau eorc';
             $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
@@ -135,7 +135,7 @@ class RequestController
 
             $mail->send();
 
-            // Daca emailul s-a trimis, salveaza răspunsul in DB
+            // Daca emailul s-a trimis salveaza răspunsul in DB
             $stmt = $conn->prepare("UPDATE requests SET response = ?, status = 'raspuns trimis' WHERE id = ?");
             $stmt->execute([$response, $id]);
             echo json_encode(['message' => 'Răspuns trimis pe email!']);
@@ -146,14 +146,14 @@ class RequestController
     }
 
     public function markDone($id)
-{
-    if ($this->requestModel->markAsDone($id)) {
-        header('Content-Type: application/json');
-        echo json_encode(["success" => true]);
-    } else {
-        header('Content-Type: application/json');
-        http_response_code(500);
-        echo json_encode(["success" => false, "error" => "Eșec la actualizare"]);
+    {
+        if ($this->requestModel->markAsDone($id)) {
+            header('Content-Type: application/json');
+            echo json_encode(["success" => true]);
+        } else {
+            header('Content-Type: application/json');
+            http_response_code(500);
+            echo json_encode(["success" => false, "error" => "Eșec la actualizare"]);
+        }
     }
-}
 }

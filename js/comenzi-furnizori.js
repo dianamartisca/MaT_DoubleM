@@ -24,7 +24,7 @@ document.querySelector('.submit-btn').addEventListener('click', async function (
   //console.log(result);
 
   location.reload();
- // window.location.href = "comenzi-furnizori-conf.html";
+ 
 });
 
 

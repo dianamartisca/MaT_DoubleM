@@ -30,9 +30,9 @@ if ($format === 'csv') {
     require_once __DIR__ . '/../../../fpdf/fpdf.php';
     $pdf = new FPDF('L', 'mm', 'A4');
     $pdf->AddPage();
-    $pdf->SetFont('Arial','B',12);
+    $pdf->SetFont('Arial', 'B', 12);
 
-    $widths = [15, 70, 70, 30, 40]; // ajustează după nevoie
+    $widths = [15, 70, 70, 30, 40];
 
     // Header
     $i = 0;
@@ -43,11 +43,11 @@ if ($format === 'csv') {
         $pdf->Ln();
 
         // Date
-        $pdf->SetFont('Arial','',10);
+        $pdf->SetFont('Arial', '', 10);
         foreach ($rows as $row) {
             $i = 0;
             foreach ($row as $cell) {
-                $pdf->Cell($widths[$i++], 10, mb_substr($cell,0,40), 1);
+                $pdf->Cell($widths[$i++], 10, mb_substr($cell, 0, 40), 1);
             }
             $pdf->Ln();
         }
@@ -55,4 +55,3 @@ if ($format === 'csv') {
     $pdf->Output('D', 'comenzi_furnizori.pdf');
 }
 exit;
-?>

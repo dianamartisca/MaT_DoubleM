@@ -42,7 +42,7 @@
     </tbody>
   </table>
 
-  <!-- NOU -->
+  
   <h2>Adauga piesa noua</h2>
 
 
@@ -53,10 +53,10 @@
     <button type="submit">Adaugă</button>
   </form>
 
-  <!-- Formular import și butoane export, cu clasă pentru stilizare -->
   <div class="import-export-section">
     <h3>Import/Export stocuri</h3>
-    <form action="my-php-backend/src/config/stocuri/import_stocuri.php" method="post" enctype="multipart/form-data" class="import-form">
+    <form action="my-php-backend/src/config/stocuri/import_stocuri.php" method="post" enctype="multipart/form-data"
+      class="import-form">
       <span>Importă cereri (CSV sau JSON):</span>
       <input type="file" name="import_file" id="import_file" accept=".csv,.json" required>
       <button type="submit" class="import-btn">Import</button>
@@ -67,8 +67,8 @@
       <a href="my-php-backend/src/config/stocuri/export_stocuri.php?format=json" class="export-btn">JSON</a>
       <a href="my-php-backend/src/config/stocuri/export_stocuri.php?format=pdf" class="export-btn">PDF</a>
     </div>
-  </div> 
-  <script src="js/stocuri.js"></script> 
+  </div>
+  <script src="js/stocuri.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="css/comenzi-furnizori.css">
 
 </head>
+
 <body>
   <h1>Comenzi către furnizori</h1>
   <table>
@@ -41,19 +43,20 @@
     <h2>Adaugă comandă nouă</h2>
 
     <form id="orderForm">
-    <input type="text" name="produs" placeholder="Denumire produs" required>
-    <input type="text" name="furnizor" placeholder="Nume furnizor" required>
-    <input type="number" name="cantitate" placeholder="Cantitate" required>
-    <input type="date" name="data_comanda" required>
-    <button type="submit" class="submit-btn">Trimite comanda</button>
+      <input type="text" name="produs" placeholder="Denumire produs" required>
+      <input type="text" name="furnizor" placeholder="Nume furnizor" required>
+      <input type="number" name="cantitate" placeholder="Cantitate" required>
+      <input type="date" name="data_comanda" required>
+      <button type="submit" class="submit-btn">Trimite comanda</button>
     </form>
 
   </div>
 
-  <!-- Import/Export Comenzi Furnizori -->
+  
   <div class="import-export-section">
     <h3>Import/Export comenzi furnizori</h3>
-    <form action="my-php-backend/src/config/comenzi/import_comenzi.php" method="post" enctype="multipart/form-data" class="import-form">
+    <form action="my-php-backend/src/config/comenzi/import_comenzi.php" method="post" enctype="multipart/form-data"
+      class="import-form">
       <span>Importă comenzi (CSV sau JSON):</span>
       <input type="file" name="import_file" accept=".csv,.json" required>
       <button type="submit" class="import-btn">Import</button>
@@ -68,4 +71,5 @@
 
   <script src="js/comenzi-furnizori.js"></script>
 </body>
+
 </html>

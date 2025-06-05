@@ -14,16 +14,17 @@ table {
   border-collapse: collapse;
   margin-top: 30px;
   background-color: #fff;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
+th,
+td {
   padding: 12px 15px;
   border-bottom: 1px solid #ccc;
 }
 
 th {
-  background-color:#333;
+  background-color: #333;
   color: white;
 }
 
@@ -32,14 +33,14 @@ th {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.add-form input, .add-form button 
-{
+.add-form input,
+.add-form button {
   width: 90%;
   padding: 10px;
   margin: 10px 0;
@@ -47,7 +48,7 @@ th {
 }
 
 .submit-btn {
-  background-color: #DC5F00;
+  background-color: #dc5f00;
   color: white;
   border: none;
   border-radius: 6px;
@@ -63,14 +64,14 @@ th {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   border-radius: 12px;
 }
 
 .import-export-section h3 {
   margin-top: 0;
   margin-bottom: 18px;
-  color: #DC5F00;
+  color: #dc5f00;
   text-align: center;
 }
 
@@ -102,7 +103,7 @@ th {
 }
 
 .export-btn {
-  background-color: #DC5F00;
+  background-color: #dc5f00;
   color: #fff;
   padding: 10px 20px;
   border: 2px solid #333;
@@ -115,5 +116,5 @@ th {
 }
 .export-btn:hover {
   background-color: #333;
-  color: #DC5F00;
+  color: #dc5f00;
 }
