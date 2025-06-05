@@ -1,6 +1,6 @@
 # 📈 TW Project - MaT (Maintenance Web Tool)
 
-TMaT DoubleM is a web application designed to digitize the scheduling, intervention and inventory management process for a service that repaires vehicles such as bicycles, scooters and cars. The application offers an intuitive interface for customers, an administrative panel for managers and a dedicated space for mechanics.
+MaT_DoubleM is a web application designed to digitize the scheduling, intervention and inventory management process for a service that repaires vehicles such as bicycles, scooters and cars. The application offers an intuitive interface for customers, an administrative panel for managers and a dedicated space for mechanics.
 
 ## 👥 Team:
 
