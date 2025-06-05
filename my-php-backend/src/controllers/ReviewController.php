@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__DIR__) . '/config/database.php';
+require_once dirname(__DIR__) . '/models/Review.php';
 
 class ReviewController
 {
@@ -16,8 +17,9 @@ class ReviewController
 
         $db = new Database();
         $conn = $db->getConnection();
-        $stmt = $conn->prepare("INSERT INTO reviews (name, email, text) VALUES (?, ?, ?)");
-        $ok = $stmt->execute([$name, $email, $text]);
+        $reviewModel = new Review($conn);
+
+        $ok = $reviewModel->addReview($name, $email, $text);
 
         if ($ok) {
             echo json_encode(['message' => 'Review salvat cu succes!']);
@@ -31,8 +33,9 @@ class ReviewController
     {
         $db = new Database();
         $conn = $db->getConnection();
-        $stmt = $conn->query("SELECT name, text FROM reviews ORDER BY id DESC");
-        $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $reviewModel = new Review($conn);
+
+        $reviews = $reviewModel->getAllReviews();
         echo json_encode(['reviews' => $reviews]);
     }
 }

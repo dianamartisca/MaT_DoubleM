@@ -59,14 +59,14 @@ CREATE OR REPLACE TABLE piese (
 
 INSERT INTO users (`id`, `name`, `user_name`, `email`, `password`, `role`) VALUES
 (1, 'Popescu Ana', 'Anika', 'ania@uaic.ro', 'xpass', 'client'),
-(2, 'Admin', 'admin', 'admin@example.com', '1234', 'admin')
-(3,'Tractoristu', 'bucsa', 'bucsa@email.com', '1234', 'mecanic');
+(2, 'Admin', 'admin', 'admin@example.com', '1234', 'admin'),
+(3, 'Tractoristu', 'bucsa', 'bucsa@email.com', '1234', 'mecanic');
 
 INSERT INTO piese (`id`, `denumire`, `categorie`,`cantitate`) VALUES
 (1, 'Placute frana auto','Masini',20),
 (2, 'Lant bicicleta', 'Biciclete', 35),
-(3, 'Baterie trotineta electrica', 'Trotinete', 12)
-(4,'Filtru aer motor', 'Masini', 25),
+(3, 'Baterie trotineta electrica', 'Trotinete', 12),
+(4, 'Filtru aer motor', 'Masini', 25),
 (5,'Camera roata', 'Biciclete', 40),
 (6,'Maneta frana', 'Trotinete', 18),
 (7,'Bec stop frana', 'Masini', 50),
