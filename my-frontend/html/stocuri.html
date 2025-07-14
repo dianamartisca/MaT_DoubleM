@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stocuri - Admin</title>
+  <link rel="stylesheet" href="../css/stocuri.css">
+
+</head>
+
+<body>
+  <h1>Stocuri disponibile</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Denumire piesă</th>
+        <th>Categorie</th>
+        <th>Cantitate</th>
+        <th>Acțiuni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr>
+        <td>Plăcuțe frână auto</td>
+        <td>Mașini</td>
+        <td>18</td>
+        <td><button class="edit-btn">Editează</button></td>
+      </tr>
+      <tr>
+        <td>Lanț bicicletă</td>
+        <td>Biciclete</td>
+        <td>35</td>
+        <td><button class="edit-btn">Editează</button></td>
+      </tr>
+      <tr>
+        <td>Baterie trotinetă electrică</td>
+        <td>Trotinete</td>
+        <td>12</td>
+        <td><button class="edit-btn">Editează</button></td>
+      </tr> -->
+    </tbody>
+  </table>
+
+  
+  <h2>Adaugă piesă nouă</h2>
+
+
+  <form id="addForm">
+    <input type="text" id="denumire" placeholder="Denumire piesă" required>
+    <input type="text" id="categorie" placeholder="Categorie" required>
+    <input type="number" id="cantitate" placeholder="Cantitate" min="0" required>
+    <button type="submit">Adaugă</button>
+  </form>
+
+  <div class="import-export-section">
+    <h3>Import/Export stocuri</h3>
+    <form action="my-php-backend/src/helpers/import/import_stocuri.php" method="post" enctype="multipart/form-data"
+      class="import-form">
+      <span>Importă cereri (CSV sau JSON):</span>
+      <input type="file" name="import_file" id="import_file" accept=".csv,.json" required>
+      <button type="submit" class="import-btn">Import</button>
+    </form>
+    <div>
+      <span>Exportă stocuri:</span>
+      <a href="my-php-backend/src/helpers/export/export_stocuri.php?format=csv" class="export-btn">CSV</a>
+      <a href="my-php-backend/src/helpers/export/export_stocuri.php?format=json" class="export-btn">JSON</a>
+      <a href="my-php-backend/src/helpers/export/export_stocuri.php?format=pdf" class="export-btn">PDF</a>
+    </div>
+  </div>
+  <script src="../../js/stocuri.js"></script>
+</body>
+
+</html>

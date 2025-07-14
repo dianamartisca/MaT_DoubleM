@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const result = await response.json();
 
     if (result.message === "Request created successfully.") {
-      window.location.href = 'request-confirmation.html';
+      window.location.href = 'http://localhost/MaT_DoubleM/my-frontend/html/request-confirmation.html';
     } else {
       alert('Eroare: ' + JSON.stringify(result));
     }

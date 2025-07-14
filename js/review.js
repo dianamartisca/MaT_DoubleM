@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       const result = await response.json();
       if (result.message) {
-        window.location.href = 'review-confirmation.html';
+        window.location.href = 'http://localhost/MaT_DoubleM/my-frontend/html/review-confirmation.html';
       } else {
         alert('Eroare la trimiterea review-ului!');
       }
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Fetch and display reviews
   const container = document.getElementById('reviews-container');
   if (container) {
-    fetch('my-php-backend/public/index.php/reviews')
+    fetch('http://localhost/MaT_DoubleM/my-php-backend/public/index.php/reviews')
       .then(res => res.json())
       .then(data => {
         if (!data.reviews || data.reviews.length === 0) {
@@ -37,4 +37,4 @@ document.addEventListener('DOMContentLoaded', function () {
         `).join('');
       });
   }
-});
+}); 

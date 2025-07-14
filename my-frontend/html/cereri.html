@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cereri programare - Admin</title>
+  <link rel="stylesheet" href="../css/cereri.css">
+
+</head>
+
+<body>
+
+
+
+  <h1>Cereri de programare</h1>
+
+  <h2>Cereri Mașini</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nume client</th>
+        <th>Data cerută</th>
+        <th>Descriere problemă</th>
+        <th>Fișiere</th>
+        <th>Răspuns</th>
+
+        <th>Aprobare</th>
+      </tr>
+    </thead>
+    <tbody id="masini">
+      <!-- <tr>
+        <td>Georgescu Mihai</td>
+        <td>2025-05-08</td>
+        <td>Schimb plăcuțe frână față</td>
+        <td>
+          <textarea rows="3" placeholder="Scrie răspunsul pentru client..."></textarea>
+          <button class="send">Trimite</button>
+        </td>
+      </tr> -->
+    </tbody>
+  </table>
+
+  <h2>Cereri Biciclete</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nume client</th>
+        <th>Data cerută</th>
+        <th>Descriere problemă</th>
+        <th>Fișiere</th>
+        <th>Răspuns</th>
+
+        <th>Aprobare</th>
+      </tr>
+    </thead>
+    <tbody id="biciclete">
+      <!-- <tr>
+        <td>Ionescu Maria</td>
+        <td>2025-05-07</td>
+        <td>Revizie completă bicicletă</td>
+        <td>
+          <textarea rows="3" placeholder="Scrie răspunsul pentru client..."></textarea>
+          <button class="send">Trimite</button>
+        </td>
+      </tr> -->
+    </tbody>
+  </table>
+
+  <h2>Cereri Trotinete</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nume client</th>
+        <th>Data cerută</th>
+        <th>Descriere problemă</th>
+        <th>Fișiere</th>
+        <th>Răspuns</th>
+
+        <th>Aprobare</th>
+
+      </tr>
+    </thead>
+    <tbody id="trotinete">
+      <!-- <tr>
+        <td>Popescu Andrei</td>
+        <td>2025-05-06</td>
+        <td>Trotinetă care nu mai pornește</td>
+        <td>
+          <textarea rows="3" placeholder="Scrie răspunsul pentru client..."></textarea>
+          <button class="send">Trimite</button>
+        </td>
+      </tr> -->
+    </tbody>
+  </table>
+
+  <!-- Formular import și butoane export, cu clasă pentru stilizare -->
+  <div class="import-export-section">
+    <h3>Import/Export cereri</h3>
+    <form action="my-php-backend/src/helpers/import/import_cereri.php" method="post" enctype="multipart/form-data"
+      class="import-form">
+      <span>Importă cereri (CSV sau JSON):</span>
+      <input type="file" name="import_file" id="import_file" accept=".csv,.json" required>
+      <button type="submit" class="import-btn">Import</button>
+    </form>
+    <div>
+      <span>Exportă cereri:</span>
+      <a href="my-php-backend/src/helpers/export/export_cereri.php?format=csv" class="export-btn">CSV</a>
+      <a href="my-php-backend/src/helpers/export/export_cereri.php?format=json" class="export-btn">JSON</a>
+      <a href="my-php-backend/src/helpers/export/export_cereri.php?format=pdf" class="export-btn">PDF</a>
+    </div>
+  </div>
+  <script src="../../js/cereri.js"></script>
+</body>
+
+</html>

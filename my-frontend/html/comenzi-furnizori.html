@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comenzi Furnizori - Admin</title>
+  <link rel="stylesheet" href="../css/comenzi-furnizori.css">
+
+</head>
+
+<body>
+  <h1>Comenzi către furnizori</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Produs</th>
+        <th>Furnizor</th>
+        <th>Cantitate</th>
+        <th>Dată comandă</th>
+      </tr>
+    </thead>
+
+
+    <tbody id="ordersTableBody">
+      <!-- <tr>
+        <td>Plăcuțe frână auto</td>
+        <td>AutoParts SRL</td>
+        <td>50</td>
+        <td>2025-04-20</td>
+      </tr>
+      <tr>
+        <td>Baterie trotinetă</td>
+        <td>ElectroSupply</td>
+        <td>30</td>
+        <td>2025-04-28</td>
+      </tr> -->
+
+    </tbody>
+  </table>
+
+  <div class="add-form">
+    <h2>Adaugă comandă nouă</h2>
+
+    <form id="orderForm">
+      <input type="text" name="produs" placeholder="Denumire produs" required>
+      <input type="text" name="furnizor" placeholder="Nume furnizor" required>
+      <input type="number" name="cantitate" placeholder="Cantitate" required>
+      <input type="date" name="data_comanda" required>
+      <button type="submit" class="submit-btn">Trimite comanda</button>
+    </form>
+
+  </div>
+
+  
+  <div class="import-export-section">
+    <h3>Import/Export comenzi furnizori</h3>
+    <form action="my-php-backend/src/helpers/import/import_comenzi.php" method="post" enctype="multipart/form-data"
+      class="import-form">
+      <span>Importă comenzi (CSV sau JSON):</span>
+      <input type="file" name="import_file" accept=".csv,.json" required>
+      <button type="submit" class="import-btn">Import</button>
+    </form>
+    <div>
+      <span>Exportă comenzi:</span>
+      <a href="my-php-backend/src/helpers/export/export_comenzi.php?format=csv" class="export-btn">CSV</a>
+      <a href="my-php-backend/src/helpers/export/export_comenzi.php?format=json" class="export-btn">JSON</a>
+      <a href="my-php-backend/src/helpers/export/export_comenzi.php?format=pdf" class="export-btn">PDF</a>
+    </div>
+  </div>
+
+  <script src="../../js/comenzi-furnizori.js"></script>
+</body>
+
+</html>
